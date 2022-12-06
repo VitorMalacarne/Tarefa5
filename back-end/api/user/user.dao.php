@@ -29,9 +29,8 @@ class UserDAO
 
     public function insert($user)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO tb_usuario (nome, nascimento, email, senha) VALUES (:nome, :nascimento, :email, :senha)");
+        $stmt = $this->pdo->prepare("INSERT INTO tb_usuario (nome, email, senha) VALUES (:nome, :email, :senha)");
         $stmt->bindValue(':nome', $user->nome);
-        $stmt->bindValue(':nascimento', $user->nascimento);
         $stmt->bindValue(':email', $user->email);
         $stmt->bindValue(':senha', $user->senha);
 
@@ -48,7 +47,6 @@ class UserDAO
         $stmt = $this->pdo->prepare("UPDATE tb_usuario
             SET
                 nome = :nome,
-                nascimento = :nascimento,
                 telefone = :telefone,
                 email = :email
             WHERE
@@ -57,8 +55,6 @@ class UserDAO
         $data = [
             'id' => $id,
             'nome' => $user->nome,
-            'nascimento' => $user->nascimento,
-            'telefone' => $user->telefone,
             'email' => $user->email,
         ];
 
