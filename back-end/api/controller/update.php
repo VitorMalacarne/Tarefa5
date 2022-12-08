@@ -1,8 +1,14 @@
 <?php
-require_once("../db/connection.inc.php");
+require_once("../database/connection.inc.php");
 require_once("user.dao.php");
 
 $userDAO = new UserDAO($pdo);
+
+// Obter o corpo da requisição
+$json = file_get_contents('php://input');
+
+// Transforma o JSON em um Objeto PHP
+$user = json_decode($json);
 
 $id = @$_REQUEST['id'];
 
@@ -13,11 +19,7 @@ if (!$id) {
     $responseBody = '{ "message": "ID não informado" }';
 } else {
     try {
-        if ($userDAO->delete($id) != 1) {
-            // Muda o código de resposta HTTP para 'not found'
-            http_response_code(404);
-            $responseBody = '{ "message": "Usuário não encontrado" }';
-        }
+        $userDAO->update($id, $user);
     } catch (Exception $e) {
         // Muda o código de resposta HTTP para 'bad request'
         http_response_code(400);
@@ -25,8 +27,8 @@ if (!$id) {
     }
 }
 
-// Define que o conteúdo da resposta será um JSON (application/JSON)
+// Defique que o conteúdo da resposta será um JSON (application/JSON)
 header('Content-Type: application/json');
 
 // Exibe a resposta
-print($responseBody);
+print_r($responseBody);

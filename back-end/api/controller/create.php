@@ -1,5 +1,5 @@
 <?php
-require_once("../db/connection.inc.php");
+require_once("../database/connection.inc.php");
 require_once("user.dao.php");
 
 $userDAO = new UserDAO($pdo);

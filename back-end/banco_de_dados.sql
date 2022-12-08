@@ -6,18 +6,18 @@ CREATE TABLE `tb_usuario` (
 `id` INT NOT NULL AUTO_INCREMENT, 
 `nome` VARCHAR(70) NOT NULL, 
 `email` VARCHAR(70) NOT NULL, 
+`nascimento` DATE NOT NULL,
+`type` VARCHAR(15) NOT NULL,
 `senha` VARCHAR(100) NOT NULL, 
 PRIMARY KEY (`id`),
 UNIQUE(`email`)
 ) ENGINE = InnoDB;
 
-
-
 CREATE TABLE `tb_afazer` (
 `id` INT NOT NULL, 
+`id_usuario` INT NOT NULL,
 `tarefa` VARCHAR(100) NOT NULL, 
-`horario` DATE NOT NULL,
-`concluido` DECIMAL NOT NULL, /*BOOLEANO 0 OU 1*/
+`data_horario` DATETIME NOT NULL,
+`concluido` BIT NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
-
