@@ -1,8 +1,8 @@
 <?php
-/*require_once("../database/connection.inc.php");
-require_once("user.dao.php");
+require_once("../database/connection.inc.php");
+require_once("afazer.dao.php");
 
-$afazerDAO = new AfazerDAO($pdo);*/
+$afazerDAO = new AfazerDAO($pdo);
 
 header("Content-Type: application/json");
 
@@ -10,7 +10,19 @@ $json = file_get_contents('php://input');
 
 $dadosAfazer = json_decode($json);
 
+$response = $afazerDAO->insert($dadosAfazer);
+
 echo $dadosAfazer->titulo;
+echo $dadosAfazer->descricao;
+echo $dadosAfazer->data_horario;
+echo $dadosAfazer->concluido;
+
+
+if(!$response) {
+    echo "Erro ao salvar afazer";
+} else {
+    echo 'Salvou!';
+}
 
 /*
 //header('Location: create.php');
