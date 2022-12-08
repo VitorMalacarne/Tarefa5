@@ -39,6 +39,7 @@
         var form
         
         function CadastrarAfazer(){
+            var resposta = document.getElementById("response")
             form = document.getElementById("formAfazer");
             dadosForm = new FormData(form)
             var titulo = dadosForm.get("titulo")
@@ -51,9 +52,18 @@
             dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
             var json = JSON.stringify(arrayFormData);
             console.log(json)
-            request= new XMLHttpRequest()
+            request = new XMLHttpRequest()
             request.open("POST", "../back-end/api/controller/create.php", true)
             request.setRequestHeader("Content-type", "application/json")
+
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+ 
+                    // Print received data from server
+                    response.innerHTML = this.responseText;
+ 
+                }
+            };
             request.send(json)
         }
  
@@ -83,8 +93,8 @@
                     <input type="date" class="form-control" name="data" placeholder="" autocomplete="on" required><br>
                   </div>
                   <div class="form-group">
-                    <label for="data">Concluido</label>
-                    <input type="checkbox">
+                    <label for="concluido">Concluido</label>
+                    <input type="checkbox" name="concluido" required>
                   </div>
                   
                     <button type="button" value="Cadastrar afazer" onclick="CadastrarAfazer();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Confirmar</button>
@@ -106,6 +116,8 @@
           });
           });
     </script>
+
+    <div id="response">Resposta</div>
     
 </body>
 </html>
