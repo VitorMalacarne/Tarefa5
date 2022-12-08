@@ -16,7 +16,8 @@ UNIQUE(`email`)
 CREATE TABLE `tb_afazer` (
 `id` INT NOT NULL, 
 `id_usuario` INT NOT NULL,
-`tarefa` VARCHAR(100) NOT NULL, 
+`titulo` VARCHAR(100) NOT NULL,
+`descricao` VARCHAR(255) NOT NULL, 
 `data_horario` DATETIME NOT NULL,
 `concluido` BIT NOT NULL,
 PRIMARY KEY (`id`)
