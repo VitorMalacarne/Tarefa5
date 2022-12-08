@@ -6,7 +6,7 @@ class AfazerDAO
         $this->pdo = $pdo;
     }
 
-    public function getById($id) {// *
+    /*public function getById($id) {// *
         //Prepare our select statement.
         $sql = "SELECT * FROM tb_afazer WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
@@ -25,7 +25,7 @@ class AfazerDAO
         return $stmt->fetchAll(PDO::FETCH_CLASS);
         return $stmt->fetchObject();
     }
-
+    */
     public function insert($id_usuario,$titulo,$descricao,$data_horario,$concluido) { // ????
         
         $sql = "INSERT INTO tb_afazer (
@@ -45,7 +45,7 @@ class AfazerDAO
 
         return $user;
     }
-
+    /*
     public function update($id, $user) {
 
         $sql = "UPDATE tb_usuario SET
@@ -74,5 +74,5 @@ class AfazerDAO
         $stmt->execute();
 
         return $stmt->rowCount();
-    }
+    }*/
 }
