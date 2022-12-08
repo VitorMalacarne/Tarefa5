@@ -23,7 +23,7 @@ class AfazerDAO
         
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
-        return $stmt->fetchObject());
+        return $stmt->fetchObject();
     }
 
     public function insert($id_usuario,$titulo,$descricao,$data_horario,$concluido) { // ????
