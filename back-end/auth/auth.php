@@ -1,7 +1,7 @@
 <?php
     require "jwtutil.class.php";
     require "config.php";
-    require "http://localhost/back-end/user/usuario.dao.php";
+    require "../user/usuario.dao.php";
 
     //1)Receber as credenciais do usuário
     //Obtendo o body da requisição HTTP
@@ -27,7 +27,8 @@
     
             //Gerar o Token
             $jwt = JwtUtil::encode($payload, JWT_SECRET_KEY);
-            $responseBody = "{\"token\": \"$jwt\", "id": ".$usuario->id." }";
+            $responseBody = "{\"token\": \"$jwt\", \"id_usuario\": \"$usuario->id\" }";
+            //$responseBody = "{\"token\": \"$jwt\", "id_usuario": ".$usuario->id." }";
 
         }else{
             http_response_code(401);//Status não auturozado

@@ -2,12 +2,13 @@ const API_URL = "http://localhost/Tarefa5/back-end/";
 
 var form
 
+let token = "xx";
+
+localStorage.setItem("token", token);
+
 function login() {
 	var resposta = document.getElementById("response");
     // FAz requisiçao para a API
-    let token = "xx";
-
-    localStorage.setItem("token", token);
 
 	const email = document.getElementById("frm_login_email").value;
 	const senha = document.getElementById("frm_login_senha").value;
@@ -28,9 +29,9 @@ function login() {
     };
     request.send(json);
 
-	localStorage.setItem("token", request->token);
-	localStorage.setItem("id_usuario", request->id_usuario)
-	localStorage.setItem("nome", request->nome)
+	localStorage.setItem("token", request.token);
+	localStorage.setItem("id_usuario", request.id_usuario);
+	localStorage.setItem("nome", request.nome);
 
 }
 
@@ -51,7 +52,7 @@ function CadastrarUsuario(){
     console.log("Nascimento: " + nascimento);
     var arrayFormData = {};
     dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
-	dadosForm[0]["token"] = token;
+	arrayFormData["token"] = token;
     var json = JSON.stringify(arrayFormData);
     console.log(json)
     request = new XMLHttpRequest()
