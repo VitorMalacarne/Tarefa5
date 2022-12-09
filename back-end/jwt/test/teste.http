@@ -1,0 +1,7 @@
+### TESTES DE consumo
+
+@URL=http://localhost/aula/jwt
+
+###Consumir um recurso qualquer da API
+GET {{URL}}/recursoqualquer.php
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkFkbWluaXN0cmFkb3IiLCJyb2xlIjoiYWRtaW4ifQ.lLoAbD1RMVyxP-dqcZ_KCSNnj81JrvcxaCopCPjWe0Y
