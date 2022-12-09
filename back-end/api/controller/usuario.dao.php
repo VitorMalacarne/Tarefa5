@@ -6,7 +6,7 @@ class UsuarioDAO
         $this->pdo = $pdo;
     }
 
-    public function get($id) {/*
+    /*public function get($id) {
         //Prepare our select statement.
         $stmt = $this->pdo->prepare("SELECT * FROM tb_usuario WHERE id = ?");
         $stmt->bindParam(1, $_REQUEST['id']);
@@ -29,11 +29,11 @@ class UsuarioDAO
             nome, email, nascimento, type, senha) 
             VALUES (:nome, :email, :nascimento, :type, :senha)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':nome', $user->nome);
-        $stmt->bindValue(':email', $user->email);
-        $stmt->bindValue(':nascimento', $user->nascimento);
-        $stmt->bindValue(':type', $user->type);
-        $stmt->bindValue(':senha', $user->senha);
+        $stmt->bindValue(':nome', $post->nome);
+        $stmt->bindValue(':email', $post->email);
+        $stmt->bindValue(':nascimento', $post->nascimento);
+        $stmt->bindValue(':type', $post->type);
+        $stmt->bindValue(':senha', $post->senha);
 
         return $stmt->execute();
         /*$user = clone $user;

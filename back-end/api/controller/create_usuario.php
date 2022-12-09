@@ -15,7 +15,7 @@ $response = $usuarioDAO->insert($dadosUsuario);
 echo $dadosUsuario->nome;
 echo $dadosUsuario->email;
 echo $dadosUsuario->nascimento;
-echo $dadosUsuario->tipo;
+echo $dadosUsuario->type;
 echo $dadosUsuario->senha;
 
 echo $response;
