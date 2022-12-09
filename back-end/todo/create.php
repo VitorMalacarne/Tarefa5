@@ -1,5 +1,5 @@
 <?php
-require_once("http://localhost/back-end/api/database/connection.inc");
+require_once("http://localhost/back-end/api/database/connection.inc.php");
 require_once("afazer.dao.php");
 
 $afazerDAO = new AfazerDAO($pdo);
