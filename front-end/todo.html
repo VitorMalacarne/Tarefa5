@@ -93,24 +93,28 @@
               <div class="modal-body" style="padding:40px 50px;">
                 <form id="formAfazer" role="form">
                     <div class="form-group">
-                        <label for="titulo">Titulo</label>
+                        <label for="titulo"><span class="glyphicon glyphicon-tasks"></span>Titulo</label>
                         <input type="text" class="form-control" name="titulo" placeholder="" autocomplete="on" required><br>
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descrição</label>
+                        <label for="descricao"><span class="glyphicon glyphicon-bookmark"></span>Descrição</label>
                         <input type="text" class="form-control" name="descricao" placeholder="" autocomplete="on" required><br>
                     </div>
                   <div class="form-group">
-                    <label for="data">Data</label>
+                    <label for="data"><span class="glyphicon glyphicon-calendar"></span>Data</label>
                     <input type="date" class="form-control" name="data" placeholder="" autocomplete="on" required><br>
                   </div>
                   <div class="form-group">
-                    <label for="horario">Horário</label>
+                    <label for="horario"><span class="glyphicon glyphicon-hourglass"></span>Horário</label>
                     <input type="time" class="form-control" name="horario" placeholder="" autocomplete="on" required><br>
                   </div>
                   <div class="form-group">
-                    <label for="concluido">Concluido</label>
-                    <input type="checkbox" name="concluido" required>
+                    <label for="concluido"><span class="glyphicon glyphicon-check"></span>Status</label>
+                    <select name="concluido" class="form-control" autocomplete="on">
+						          <option value="" disabled selected hidden>Selecione</option>
+                      <option value="0">Pendente</option>	
+						          <option value="1">Concluído</option>
+						        </select>
                   </div>
                   
                     <button type="button" value="Cadastrar afazer" onclick="CadastrarAfazer();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Confirmar</button>

@@ -126,17 +126,17 @@
                   <div class="form-group">
                     <label for="type"><span class="glyphicon glyphicon-user"></span>Tipo</label>
                     <select name="type" class="form-control" autocomplete="on">
-						<option value="" disabled selected hidden>Selecione</option>	
-						<option value="0">Usuário</option>
-						<option value="1">Administrador</option>
-						</select>
+						          <option value="" disabled selected hidden>Selecione</option>	
+						          <option value="0">Usuário</option>
+						          <option value="1">Administrador</option>
+						        </select>
                   </div>
                 <div class="form-group">
                   <div class="form-group">
                     <label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
                     <input type="password" class="form-control" name="senha" placeholder="********" autocomplete="on">
                   </div>
-                    <button type="button" value="Cadastrar usuário" onclick="CadastrarUsuario();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    <button type="button"  id="confirmar" value="Cadastrar usuário" onclick="CadastrarUsuario();" class="btn btn-primary btn-block" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span> Login</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -160,6 +160,8 @@
           $("#modalcad").modal();
         });
         });
+        
+
       </script>
   <section>
       <!-- Carousel -->
@@ -191,7 +193,7 @@
     </div>
   </section>
 
-  <div id="response">Resposta</div>
+   <div id="response" class="container p-5 my-5 bg-success text-white">Resposta</div>
 
 </body>
 </html>
