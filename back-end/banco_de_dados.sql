@@ -14,11 +14,12 @@ UNIQUE(`email`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `tb_afazer` (
-`id` INT NOT NULL, 
+`id` INT NOT NULL AUTO_INCREMENT, 
 `id_usuario` INT NOT NULL,
 `titulo` VARCHAR(100) NOT NULL,
 `descricao` VARCHAR(255) NOT NULL, 
-`data_horario` DATETIME NOT NULL,
+`data` DATE NOT NULL,
+`horario` TIME NOT NULL,
 `concluido` BIT NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;

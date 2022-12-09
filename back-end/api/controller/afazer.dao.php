@@ -30,21 +30,18 @@ class AfazerDAO
         
         $id_usuario = 5;
 
-        //date("YYYY-MM-DD HH:MI:SS", strtotime($post->data_horario));
-
-        $data_horario = '20.06.2018 10:12:45';
-
         $sql = "INSERT INTO tb_afazer (
-            id_usuario, titulo, descricao, data_horario, concluido) 
-            VALUES (:id_usuario, :titulo, :descricao, :data_horario, :concluido)";
+            id_usuario, titulo, descricao, data, horario, concluido) 
+            VALUES (:id_usuario, :titulo, :descricao, :data, :horario, :concluido)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id_usuario', $id_usuario);
         $stmt->bindValue(':titulo', $post->titulo);
         $stmt->bindValue(':descricao', $post->descricao);
-        $stmt->bindValue(':data_horario', $data_horario);
+        $stmt->bindValue(':data', $post->data);
+        $stmt->bindValue(':horario', $post->horario);
         $stmt->bindValue(':concluido', $post->concluido);
 
-        $stmt->execute();
+        return $stmt->execute();
         /*$user = clone $user;
 
         $user->id = $this->pdo->lastInsertId();
