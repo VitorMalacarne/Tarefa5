@@ -1,15 +1,43 @@
+const API_URL = "http://localhost/Tarefa5/back-end/";
+
+var form
+
 function login() {
+	var resposta = document.getElementById("response");
     // FAz requisiçao para a API
     let token = "xx";
 
     localStorage.setItem("token", token);
+
+	const email = document.getElementById("frm_login_email").value;
+	const senha = document.getElementById("frm_login_senha").value;
+
+    var json = JSON.stringify({ email, senha});
+    console.log(json);
+
+	request = new XMLHttpRequest()
+    request.open("POST", API_URL+"auth/auth.php", true)
+    request.setRequestHeader("Content-type", "application/json")
+    request.onreadystatechange = function () {
+		console.log(request);
+
+        if (request.readyState === 4 && request.status === 200) {
+            // Print received data from server
+            response.innerHTML = this.responseText;
+        }
+    };
+    request.send(json);
+
+	localStorage.setItem("token", request->token);
+	localStorage.setItem("id_usuario", request->id_usuario)
+	localStorage.setItem("nome", request->nome)
+
 }
 
-login();
+// login();
 
-alert(localStorage.getItem("token"));
+// alert(localStorage.getItem("token"));
 
-var form
 			
 function CadastrarUsuario(){
     var resposta = document.getElementById("response")
@@ -23,10 +51,11 @@ function CadastrarUsuario(){
     console.log("Nascimento: " + nascimento);
     var arrayFormData = {};
     dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
+	dadosForm[0]["token"] = token;
     var json = JSON.stringify(arrayFormData);
     console.log(json)
     request = new XMLHttpRequest()
-    request.open("POST", "../back-end/api/controller/create_usuario.php", true)
+    request.open("POST", API_URL+"user/create.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {

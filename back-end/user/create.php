@@ -1,5 +1,5 @@
 <?php
-require_once("../database/connection.inc.php");
+require_once("http://localhost/back-end/api/database/connection.inc");
 require_once("usuario.dao.php");
 @session_start();
 

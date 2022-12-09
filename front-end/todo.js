@@ -1,4 +1,4 @@
-const API_URL = "http://localhost/back-end/api/";
+const API_URL = "http://localhost/back-end/";
 
         var form
 
@@ -27,7 +27,7 @@ const API_URL = "http://localhost/back-end/api/";
             var json = JSON.stringify(arrayFormData);
             console.log(json)
             request = new XMLHttpRequest()
-            request.open("POST", API_URL+"controller/create_afazer.php", true)
+            request.open("POST", API_URL+"todo/create.php", true)
             request.setRequestHeader("Content-type", "application/json")
 
             request.onreadystatechange = function () {
