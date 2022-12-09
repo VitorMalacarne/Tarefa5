@@ -11,13 +11,13 @@
     <title>Login</title>
     <style>
         .modal-header, h4, .close {
-          background-color: #2D53FE;
-          color:white !important;
-          text-align: center;
-          font-size: 30px;
+          	background-color: #2D53FE;
+          	color:white !important;
+          	text-align: center;
+          	font-size: 30px;
         }
         .modal-footer {
-          background-color: #f9f9f9;
+          	background-color: #f9f9f9;
         }
     
         </style>
@@ -37,30 +37,66 @@
           
             
             <div class="modal-content">
-              <div class="modal-header" style="padding:10px 50px;">
+              	<div class="modal-header" style="padding:10px 50px;">
                 <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-              </div>
-              <div class="modal-body" style="padding:40px 50px;">
+              	</div>
+              	<div class="modal-body" style="padding:40px 50px;">
                 <form role="form">
-                  <div class="form-group">
-                    <label for="email"><span class="glyphicon glyphicon-user"></span> Usuário</label>
-                    <input type="text" class="form-control" id="email" placeholder="E-mail">
-                  </div>
-                  <div class="form-group">
-                    <label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                    <input type="text" class="form-control" id="senha" placeholder="********">
-                  </div>
+                  	<div class="form-group">
+                    	<label for="email"><span class="glyphicon glyphicon-user"></span> Usuário</label>
+                    	<input type="text" class="form-control" id="email" placeholder="E-mail">
+                  	</div>
+                  	<div class="form-group">
+                    	<label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                    	<input type="text" class="form-control" id="senha" placeholder="********">
+                  	</div>
                     <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-              </div>
+              	</div>
+              	<div class="modal-footer">
+                	<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+              	</div>
             </div>
             
           </div>
         </div> 
       </div>
+
+
+      	<script type="text/javascript">
+        	var form
+			
+        	function CadastrarUsuario(){
+        	    var resposta = document.getElementById("response")
+        	    form = document.getElementById("formCadastro");
+        	    dadosForm = new FormData(form)
+        	    var nome = dadosForm.get("nome")
+        	    var email = dadosForm.get("email")
+        	    var nascimento = dadosForm.get("nascimento")
+        	    console.log("Nome: " + nome);
+        	    console.log("Email: " + email);
+        	    console.log("Nascimento: " + nascimento);
+        	    var arrayFormData = {};
+        	    dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
+        	    var json = JSON.stringify(arrayFormData);
+        	    console.log(json)
+        	    request = new XMLHttpRequest()
+        	    request.open("POST", "../back-end/api/controller/create_usuario.php", true)
+        	    request.setRequestHeader("Content-type", "application/json")
+
+        	    request.onreadystatechange = function () {
+        	        if (request.readyState === 4 && request.status === 200) {
+					
+        	            // Print received data from server
+        	            response.innerHTML = this.responseText;
+					
+        	        }
+        	    };
+        	    request.send(json)
+        	}
+ 
+    </script>
+
       
       <div class="container">
         
@@ -74,33 +110,33 @@
                 <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
               </div>
               <div class="modal-body" style="padding:40px 50px;">
-                <form role="form">
+                <form role="form" id="formCadastro">
                     <div class="form-group">
                         <label for="nome"><span class="glyphicon glyphicon-user"></span> Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Nome">
+                        <input type="text" class="form-control" id="nome" placeholder="Nome" autocomplete="on">
                       </div>
                     <div class="form-group">
                     <label for="email"><span class="glyphicon-envelope"></span> E-mail</label>
-                    <input type="text" class="form-control" id="email" placeholder="E-mail">
+                    <input type="text" class="form-control" id="email" placeholder="E-mail" autocomplete="on">
                   </div>
                   <div class="form-group">
                     <label for="nascimento"><span class="glyphicon glyphicon-calendar"></span> Nascimento</label>
-                    <input type="date" class="form-control" id="nascimento" placeholder="E-mail">
+                    <input type="date" class="form-control" id="nascimento" placeholder="Data de nascimento" autocomplete="on">
                   </div>
                   <div class="form-group">
                     <label for="type"><span class="glyphicon glyphicon-user"></span>Tipo</label>
-                    <select name="type" class="form-control">
+                    <select name="type" class="form-control" autocomplete="on">
 						<option value="" disabled selected hidden>Selecione</option>	
-						<option value="1">Usuário</option>
-						<option value="2">Administrador</option>
+						<option value="0">Usuário</option>
+						<option value="1">Administrador</option>
 						</select>
                   </div>
                 <div class="form-group">
                   <div class="form-group">
                     <label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                    <input type="text" class="form-control" id="senha" placeholder="********">
+                    <input type="password" class="form-control" id="senha" placeholder="********" autocomplete="on">
                   </div>
-                    <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    <button type="button" value="Cadastrar usuário" onclick="CadastrarUsuario();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -154,5 +190,8 @@
     </button>
     </div>
   </section>
+
+  <div id="response">Resposta</div>
+
 </body>
 </html>

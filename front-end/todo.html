@@ -53,7 +53,7 @@
             var json = JSON.stringify(arrayFormData);
             console.log(json)
             request = new XMLHttpRequest()
-            request.open("POST", "../back-end/api/controller/create.php", true)
+            request.open("POST", "../back-end/api/controller/create_afazer.php", true)
             request.setRequestHeader("Content-type", "application/json")
 
             request.onreadystatechange = function () {

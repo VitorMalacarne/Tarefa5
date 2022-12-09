@@ -14,7 +14,7 @@ class AfazerDAO
 
         $stmt->execute();
         return $stmt->fetchObject();
-    }
+    }*/
 
     public function getAllByUserId($id_usuario) { // ?
         $sql = "SELECT * FROM tb_afazer WHERE id_usuario = ?";
@@ -23,10 +23,10 @@ class AfazerDAO
         
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
-        return $stmt->fetchObject();
+        //return $stmt->fetchObject();
     }
-    */
-    public function insert($post) { // ????
+    
+    public function insert($post) { 
         
         $id_usuario = 5;
 
