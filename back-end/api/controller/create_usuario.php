@@ -10,6 +10,23 @@ $json = file_get_contents('php://input');
 
 $dadosUsuario = json_decode($json);
 
+
+if(empty($usuarioDAO->getUsuarioByEmail(@$_POST['email']))){
+            
+    $usuarioDAO->insert(@$_POST);
+    $view = '../view_usuario/principal.php';
+    
+    $id = $usuarioDAO->getUsuarioByEmail(@$_POST['email'])->id;
+    echo $id;
+    $_SESSION['id'] = $id;
+    $_SESSION['nome'] = @$_POST['nome'];
+    
+    header('location: '.$view);
+    
+}
+$message = "O email ".$_POST['email']." já está sendo utilizado, escolha outro";
+
+
 $response = $usuarioDAO->insert($dadosUsuario);
 
 echo $dadosUsuario->nome;

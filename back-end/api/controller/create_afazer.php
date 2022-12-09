@@ -12,13 +12,6 @@ $dadosAfazer = json_decode($json);
 
 $response = $afazerDAO->insert($dadosAfazer);
 
-echo $dadosAfazer->titulo;
-echo $dadosAfazer->descricao;
-echo $dadosAfazer->data;
-echo $dadosAfazer->horario;
-echo $dadosAfazer->concluido;
-
-echo $response;
 if(!$response) {
     echo "Erro ao salvar afazer";
 } else {
