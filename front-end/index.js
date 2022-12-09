@@ -28,6 +28,16 @@ function login() {
         }
     };
     request.send(json);
+    
+    let obj = JSON.parse(request.response);
+
+
+    //var obj = rawResponse.json();
+
+    console.log("Alo?")
+    console.log("Este é o token: " + obj.token);
+    console.log("Este é o id_usuario: " + obj.id_usuario);
+    console.log("Este é o nome: " + obj.nome);
 
 	localStorage.setItem("token", request.token);
 	localStorage.setItem("id_usuario", request.id_usuario);

@@ -31,13 +31,20 @@
             $responseBody = "{\"token\": \"$jwt\", \"id_usuario\": \"$usuario->id\", \"nome\": \"$usuario->nome\" }";
             //$responseBody = "{\"token\": \"$jwt\", "id_usuario": ".$usuario->id." }";
 
+            /*$arrayJSON = array("token"=>$jwt, "id_usuario"=>$usuario->id, "nome"=>$usuario->nome);
+            $json = json_encode($arrayJSON);*/
+
+            header('Content-type: application/json');
+            print_r($responseBody);
+
+
         }else{
             http_response_code(401);//Status não auturozado
             $responseBody = '{"message": "Credenciais inválidas" }';
+            header('Content-type: application/json');
+            print_r($responseBody);
         }
     }
 
-    header('Content-type: application/json');
-    print_r($responseBody)
 
 ?>
