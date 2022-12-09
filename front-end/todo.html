@@ -36,7 +36,19 @@
     </header>
     
     <script type="text/javascript">
+        const API_URL = "http://localhost/back-end/api/";
+
         var form
+
+        function login() {
+          // FAz requisiçao para a API
+          let token = "xx";
+    
+          localStorage.setItem("token", token);
+        }
+
+		login();
+
         
         function CadastrarAfazer(){
             var resposta = document.getElementById("response")
@@ -53,7 +65,7 @@
             var json = JSON.stringify(arrayFormData);
             console.log(json)
             request = new XMLHttpRequest()
-            request.open("POST", "../back-end/api/controller/create_afazer.php", true)
+            request.open("POST", API_URL+"controller/create_afazer.php", true)
             request.setRequestHeader("Content-type", "application/json")
 
             request.onreadystatechange = function () {
