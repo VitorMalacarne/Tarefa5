@@ -20,16 +20,19 @@ function login() {
     request.open("POST", API_URL+"auth/auth.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
-		console.log(request);
+		//console.log(request);
 
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
-            
+            var resposta = this.response;
             response.innerHTML = this.responseText;
+            console.log(JSON.parse("{\"name\":\"alan\",\"age\":34}"));
             
-            dataType: 'json'
+            console.log(typeof(resposta));
+            //dataType: 'json'
             //response.setRequestHeader("Content-type", "application/json");
-            let obj = JSON.parse(this.requestText);
+            let obj = JSON.parse(resposta);
+
         
         
             //var obj = rawResponse.json();

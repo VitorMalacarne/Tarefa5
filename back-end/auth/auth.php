@@ -32,9 +32,10 @@
     
             //Gerar o Token
             $jwt = JwtUtil::encode($payload, JWT_SECRET_KEY);
-            $responseBody = "{\"token\": \"$jwt\", \"id_usuario\": \"$usuario->id\", \"nome\": \"$usuario->nome\" }";
+            //$responseBody = "{\"token\": \"$jwt\", \"id_usuario\": \"$usuario->id\", \"nome\": \"$usuario->nome\" }";
             //$responseBody = "{\"token\": \"$jwt\", "id_usuario": ".$usuario->id." }";
-
+            $responseBody = "{\"token\":\"$jwt\",\"id_usuario\":\"$id_usuario\",\"nome\":\"$nome\" }";
+            //"{\"name\":\"alan\",\"age\":34}"
 
             $arrayJSON = array('token'=>$jwt, 'id_usuario'=>$id_usuario, 'nome'=>$nome);
             $jsonFile = json_encode($arrayJSON);
@@ -42,7 +43,7 @@
             //echo $jsonFile;
 
             header('Content-type: application/json');
-            print_r($jsonFile);
+            print_r($responseBody);
 
 
         }else{
