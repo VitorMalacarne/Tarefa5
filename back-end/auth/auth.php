@@ -20,10 +20,14 @@
     }else{
         if($senha == $usuario->senha){
 
+            $id_usuario = $usuario->id;
+            $nome = $usuario->nome;
+            $type = $usuario->type;
+
             $payload = [
-                "id_usuario"=> $usuario->id,
-                "nome"=> $usuario->nome, 
-                "type"=> $usuario->type 
+                "id_usuario"=> $id_usuario,
+                "nome"=> $nome, 
+                "type"=> $type 
             ];
     
             //Gerar o Token
@@ -31,11 +35,14 @@
             $responseBody = "{\"token\": \"$jwt\", \"id_usuario\": \"$usuario->id\", \"nome\": \"$usuario->nome\" }";
             //$responseBody = "{\"token\": \"$jwt\", "id_usuario": ".$usuario->id." }";
 
-            /*$arrayJSON = array("token"=>$jwt, "id_usuario"=>$usuario->id, "nome"=>$usuario->nome);
-            $json = json_encode($arrayJSON);*/
+
+            $arrayJSON = array('token'=>$jwt, 'id_usuario'=>$id_usuario, 'nome'=>$nome);
+            $jsonFile = json_encode($arrayJSON);
+
+            //echo $jsonFile;
 
             header('Content-type: application/json');
-            print_r($responseBody);
+            print_r($jsonFile);
 
 
         }else{

@@ -24,24 +24,29 @@ function login() {
 
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
+            
             response.innerHTML = this.responseText;
+            
+            dataType: 'json'
+            //response.setRequestHeader("Content-type", "application/json");
+            let obj = JSON.parse(this.requestText);
+        
+        
+            //var obj = rawResponse.json();
+        
+            console.log("Alo?")
+            console.log("Este é o token: " + obj.token);
+            console.log("Este é o id_usuario: " + obj.id_usuario);
+            console.log("Este é o nome: " + obj.nome);
+        
+            localStorage.setItem("token", obj.token);
+            localStorage.setItem("id_usuario", obj.id_usuario);
+            localStorage.setItem("nome", obj.nome);
         }
     };
     request.send(json);
     
-    let obj = JSON.parse(request.response);
 
-
-    //var obj = rawResponse.json();
-
-    console.log("Alo?")
-    console.log("Este é o token: " + obj.token);
-    console.log("Este é o id_usuario: " + obj.id_usuario);
-    console.log("Este é o nome: " + obj.nome);
-
-	localStorage.setItem("token", request.token);
-	localStorage.setItem("id_usuario", request.id_usuario);
-	localStorage.setItem("nome", request.nome);
 
 }
 
