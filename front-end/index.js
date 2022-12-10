@@ -2,9 +2,7 @@ const API_URL = "http://localhost/Tarefa5/back-end/";
 
 var form
 
-let token = "xx";
-
-localStorage.setItem("token", token);
+localStorage.clear();
 
 function login() {
 	var resposta = document.getElementById("response");
