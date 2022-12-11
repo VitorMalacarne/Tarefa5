@@ -4,7 +4,7 @@ var token = "";
 var form;
 token = localStorage.getItem('token');
 
-function login() {
+/*function login() {
     var resposta = document.getElementById("response");
     // FAz requisiçao para a API
     const email = document.getElementById("frm_login_email").value;
@@ -40,7 +40,7 @@ function login() {
         }
     };
     request.send(json);        
-    }
+    }*/
         
 function CadastrarAfazer(){
 
@@ -72,6 +72,7 @@ function CadastrarAfazer(){
     };
     request.send(json);
     listarAfazer();
+    listarAfazer();
 }
 
 function verificarUsuario() {
@@ -81,22 +82,26 @@ function verificarUsuario() {
     } else {
         var arrayToken = {};
         arrayToken["token"] = token;
+        console.log(arrayToken);
         var json = JSON.stringify(arrayToken);   
         request = new XMLHttpRequest();     
+        console.log("Testando com a testa: "+json)
         request.open("POST", API_URL+"user/decoder.php", true)
         request.setRequestHeader("Content-type", "application/json")
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
+            
                 console.log("Essa é a resposta: ")
             
-                        var resposta = this.responseText;
-                        console.log(resposta);
-                        console.log(resposta);
-                        let obj = JSON.parse(resposta);
-                        console.log("Teste"+obj.nome)
-
-                        document.getElementById("usuario_ativo").innerHTML(resposta.nome);
-                        document.getElementById("tipo_usuario").innerHTML(resposta.type);
+                document.getElementById("response_verifica").innerHTML = this.responseText
+                var resposta = this.responseText;
+                
+                console.log(resposta);
+                console.log(resposta);
+                /*let obj = JSON.parse(resposta);
+                console.log("Teste"+obj.nome)
+                document.getElementById("usuario_ativo").innerHTML(resposta.nome);
+                document.getElementById("tipo_usuario").innerHTML(resposta.type);*/
             }
         };
         request.send(json);
@@ -123,6 +128,7 @@ function listarAfazer() {
                 response.innerHTML = "Não há afazeres";
             } else {
                 var listaAfazeres = document.getElementById("listaAfazeres");
+                listaAfazeres.innerHTML = "";
                 for(var i=0;i<resposta.length;i++){
                     var ul = document.createElement("ul");
 
@@ -130,23 +136,35 @@ function listarAfazer() {
                     var textnode = document.createTextNode("Título: "+resposta[i].titulo);
                     item.appendChild(textnode);
                     ul.appendChild(item);
-                    var item = document.createElement("li");
-                    var textnode = document.createTextNode("Descrição: "+resposta[i].descricao);
+                    item = document.createElement("li");
+                    textnode = document.createTextNode("Descrição: "+resposta[i].descricao);
                     item.appendChild(textnode);
                     ul.appendChild(item);
-                    var item = document.createElement("li");
-                    var textnode = document.createTextNode("Data: "+resposta[i].data);
+                    item = document.createElement("li");
+                    textnode = document.createTextNode("Data: "+resposta[i].data);
                     item.appendChild(textnode);
                     ul.appendChild(item);
-                    var item = document.createElement("li");
-                    var textnode = document.createTextNode("Horário: "+resposta[i].horario);
+                    item = document.createElement("li");
+                    textnode = document.createTextNode("Horário: "+resposta[i].horario);
                     item.appendChild(textnode);
                     ul.appendChild(item);
-                    var item = document.createElement("li");
-                    var textnode = document.createTextNode("Concluído: "+resposta[i].concluido);
+                    item = document.createElement("li");
+                    textnode = document.createTextNode("Concluído: "+resposta[i].concluido);
                     item.appendChild(textnode);
                     ul.appendChild(item);
-                    
+                    item = document.createElement("button");
+                    item.innerHTML = "Editar";
+                    item.addEventListener('click', () => {
+                        editar(resposta[i].id);
+                    })
+                    ul.appendChild(item);
+                    item = document.createElement("button");
+                    item.innerHTML = "deletar";
+                    item.addEventListener('click', () => {
+                        deletar(resposta[i].id);
+                    })
+                    ul.appendChild(item);
+
                     listaAfazeres.appendChild(ul);
                 }
             }
@@ -154,6 +172,30 @@ function listarAfazer() {
     };
     request.send(json)
 }
+
+
+function editar(id_afazer){
+    console.log("Teste editar");
+}
+
+function deletar(id_afazer) {
+    console.log("Teste deletar");
+    var json = JSON.stringify({id_afazer});
+    request = new XMLHttpRequest()
+    request.open("POST", API_URL+"todo/delete.php", true)
+    request.setRequestHeader("Content-type", "application/json")
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            // Print received data from server
+            response.innerHTML = this.responseText;
+
+        }
+    };
+    request.send(json);
+    listarAfazer();
+    listarAfazer();
+}
+
 
 verificarUsuario();
 listarAfazer();

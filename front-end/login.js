@@ -34,11 +34,10 @@ function login() {
             
             //var obj = rawResponse.json();
             
-            /*console.log("Alo? porr")
-            console.log("ASDADSDSDSA")
+            console.log("Alo?");
             console.log("Este é o token: " + obj.token);
             console.log("Este é o id_usuario: " + obj.id_usuario);
-            console.log("Este é o nome: " + obj.nome);*/
+            console.log("Este é o nome: " + obj.nome);
         
             localStorage.setItem("token", obj.token);
             localStorage.setItem("id_usuario", obj.id_usuario);
