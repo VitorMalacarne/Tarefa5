@@ -2,9 +2,6 @@
 require "../auth/jwtutil.class.php";
 require "../auth/config.php";
 require_once("../api/database/connection.inc.php");
-require_once("afazer.dao.php");
-
-$afazerDAO = new AfazerDAO($pdo);
 
 header("Content-Type: application/json");
 
@@ -17,6 +14,7 @@ $token = $dadosJSON->token;
     $responseBody = "";
     if($token){
         $decoded = JwtUtil::decode($token, JWT_SECRET_KEY);
+        
     } else {
         http_response_code(401); // Não autorizado
         $responseBody = '{ "message": "Sem token"}';
@@ -29,17 +27,7 @@ $token = $dadosJSON->token;
         exit; // Encerra o scripts
     }
 
-$id_usuario = $decoded['id_usuario'];
-
-try {
-    $lista = $afazerDAO->getAllByUserId($id_usuario);
-    $responseBody = json_encode($lista);
-} catch (Exception $e) {    
-    // Muda o código de resposta HTTP para 'bad request'
-    http_response_code(400);
-    $responseBody = '{ "message": "Ocorreu um erro ao tentar executar esta ação. Erro: Código: ' .  $e->getCode() . '. Mensagem: ' . $e->getMessage() . '" }';
-}
-
+$responseBody = "{\"nome\":\"$decoded->nome\",\"type\":\"$decoded->type\"}";
 // Defique que o conteúdo da resposta será um JSON (application/JSON)
 header('Content-Type: application/json');
 

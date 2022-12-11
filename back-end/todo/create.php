@@ -1,6 +1,9 @@
 <?php
-require_once("http://localhost/back-end/api/database/connection.inc.php");
+require "../auth/jwtutil.class.php";
+require "../auth/config.php";
+require_once('../api/database/connection.inc.php');
 require_once("afazer.dao.php");
+
 
 $afazerDAO = new AfazerDAO($pdo);
 
@@ -27,7 +30,7 @@ $token = $dadosAfazer->token;
         exit; // Encerra o scripts
     }
 
-$dadosAfazer->id_usuario = $decoded->id_usuario;
+$dadosAfazer->id_usuario = $decoded['id_usuario'];
 
 $response = $afazerDAO->insert($dadosAfazer);
 
@@ -37,7 +40,7 @@ if(!$response) {
     echo 'Salvou!';
 }
 
-$responseBody = '';
+/*$responseBody = '';
 
 try {
     $dadosAfazer = $afazerDAO->insert($dadosAfazer);
@@ -47,7 +50,7 @@ try {
     // Muda o código de resposta HTTP para 'bad request'
     http_response_code(400);
     $responseBody = '{ "message": "Ocorreu um erro ao tentar executar esta ação. Erro: Código: ' .  $e->getCode() . '. Mensagem: ' . $e->getMessage() . '" }';
-}
+}*/
 
 
 
@@ -57,6 +60,6 @@ try {
 header('Content-Type: application/json');
 
 // Exibe a resposta
-print_r($responseBody);
+print_r($response);
 
 ?>

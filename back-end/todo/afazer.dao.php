@@ -19,7 +19,7 @@ class AfazerDAO
     public function getAllByUserId($id_usuario) { // ?
         $sql = "SELECT * FROM tb_afazer WHERE id_usuario = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(1, $_REQUEST['id']);
+        $stmt->bindParam(1, $id_usuario);
         
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
