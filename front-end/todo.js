@@ -76,8 +76,8 @@ function CadastrarAfazer(){
 
 function verificarUsuario() {
 
-    if(token == ""){
-
+    if(token == null) {
+        document.getElementById("container").innerHTML = "Faça login para acessar as suas to-dos";
     } else {
         var arrayToken = {};
         arrayToken["token"] = token;

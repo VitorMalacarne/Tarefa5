@@ -30,14 +30,14 @@
         <nav class="navbar navbar-default bg-dark text-white">
             <div><h1>My TO-Dos!</h1></div>
             <div id="tipo_usuario"></div><!--fazer lógica para mostrar se é usuário ou adm-->
-            <div id="usuario_ativo">usuario<a>logout</a></div>
+            <div id="usuario_ativo"><a href="index.html">Voltar para a página de login</a></div>
         </nav>
         
     </header>
     
     <script src="todo.js" defer> </script>
 
-    <div class="container">
+    <div class="container" id="container">
         <h2>Meus Afazeres</h2>
         <button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="newtask">Novo</button>
         <div class="modal fade" id="modaltask" role="dialog">
@@ -84,14 +84,14 @@
             
           </div>
         </div> 
-      </div>
+    </div>
     
     <script>  
         $(document).ready(function(){
           $("#newtask").click(function(){
             $("#modaltask").modal();
           });
-          });
+        });
     </script>
 
     <div id="response">Resposta:</div>

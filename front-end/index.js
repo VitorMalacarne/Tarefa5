@@ -5,21 +5,20 @@ var form
 localStorage.clear();
 
 function login() {
-	var resposta = document.getElementById("response");
+    var resposta = document.getElementById("response");
     // FAz requisiçao para a API
-
 	const email = document.getElementById("frm_login_email").value;
 	const senha = document.getElementById("frm_login_senha").value;
-
+    
     var json = JSON.stringify({ email, senha});
     console.log(json);
-
+    
 	request = new XMLHttpRequest()
     request.open("POST", API_URL+"auth/auth.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
-		//console.log(request);
-
+        //console.log(request);
+        
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
             var resposta = this.response;
@@ -30,19 +29,23 @@ function login() {
             //dataType: 'json'
             //response.setRequestHeader("Content-type", "application/json");
             let obj = JSON.parse(resposta);
-
-        
-        
+            
+            
+            
             //var obj = rawResponse.json();
-        
-            console.log("Alo?")
+            
+            /*console.log("Alo? porr")
+            console.log("ASDADSDSDSA")
             console.log("Este é o token: " + obj.token);
             console.log("Este é o id_usuario: " + obj.id_usuario);
-            console.log("Este é o nome: " + obj.nome);
+            console.log("Este é o nome: " + obj.nome);*/
         
             localStorage.setItem("token", obj.token);
             localStorage.setItem("id_usuario", obj.id_usuario);
             localStorage.setItem("nome", obj.nome);
+            
+            document.getElementById("acessar_todo").removeAttribute("hidden");
+            
         }
     };
     request.send(json);
