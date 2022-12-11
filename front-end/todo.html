@@ -29,58 +29,15 @@
     <header>
         <nav class="navbar navbar-default bg-dark text-white">
             <div><h1>My TO-Dos!</h1></div>
-            <div>tipo</div><!--fazer lógica para mostrar se é usuário ou adm-->
-            <div>usuario<a>logout</a></div>
+            <div id="tipo_usuario"></div><!--fazer lógica para mostrar se é usuário ou adm-->
+            <div id="usuario_ativo"><a href="index.html">Voltar para a página de login</a></div>
         </nav>
         
     </header>
     
-    <script type="text/javascript">
-        const API_URL = "http://localhost/back-end/api/";
+    <script src="todo.js" defer> </script>
 
-        var form
-
-        function login() {
-          // FAz requisiçao para a API
-          let token = "xx";
-    
-          localStorage.setItem("token", token);
-        }
-
-		login();
-
-        
-        function CadastrarAfazer(){
-            var resposta = document.getElementById("response")
-            form = document.getElementById("formAfazer");
-            dadosForm = new FormData(form)
-            var titulo = dadosForm.get("titulo")
-            var descricao = dadosForm.get("descricao")
-            var data = dadosForm.get("data")
-            console.log("Titulo: " + titulo);
-            console.log("Descrição: " + descricao);
-            console.log("Data: " + data);
-            var arrayFormData = {};
-            dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
-            var json = JSON.stringify(arrayFormData);
-            console.log(json)
-            request = new XMLHttpRequest()
-            request.open("POST", API_URL+"controller/create_afazer.php", true)
-            request.setRequestHeader("Content-type", "application/json")
-
-            request.onreadystatechange = function () {
-                if (request.readyState === 4 && request.status === 200) {
- 
-                    // Print received data from server
-                    response.innerHTML = this.responseText;
- 
-                }
-            };
-            request.send(json)
-        }
- 
-    </script>
-    <div class="container">
+    <div class="container" id="container">
         <h2>Meus Afazeres</h2>
         <button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="newtask">Novo</button>
         <div class="modal fade" id="modaltask" role="dialog">
@@ -111,10 +68,10 @@
                   <div class="form-group">
                     <label for="concluido"><span class="glyphicon glyphicon-check"></span>Status</label>
                     <select name="concluido" class="form-control" autocomplete="on">
-						          <option value="" disabled selected hidden>Selecione</option>
-                      <option value="0">Pendente</option>	
-						          <option value="1">Concluído</option>
-						        </select>
+						<option value="" disabled selected hidden>Selecione</option>
+                      	<option value="0">Pendente</option>	
+						<option value="1">Concluído</option>
+					</select>
                   </div>
                   
                     <button type="button" value="Cadastrar afazer" onclick="CadastrarAfazer();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Confirmar</button>
@@ -127,17 +84,19 @@
             
           </div>
         </div> 
-      </div>
+    </div>
     
     <script>  
         $(document).ready(function(){
           $("#newtask").click(function(){
             $("#modaltask").modal();
           });
-          });
+        });
     </script>
 
-    <div id="response">Resposta</div>
-    
+    <div id="response">Resposta:</div>
+		<div id="response_verifica"></div>
+    <div id="listaAfazeres"></div>
+  
 </body>
 </html>

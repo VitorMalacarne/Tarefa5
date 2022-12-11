@@ -19,7 +19,7 @@ class AfazerDAO
     public function getAllByUserId($id_usuario) { // ?
         $sql = "SELECT * FROM tb_afazer WHERE id_usuario = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(1, $_REQUEST['id']);
+        $stmt->bindParam(1, $id_usuario);
         
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
@@ -27,14 +27,12 @@ class AfazerDAO
     }
     
     public function insert($post) { 
-        
-        $id_usuario = 5;
 
         $sql = "INSERT INTO tb_afazer (
             id_usuario, titulo, descricao, data, horario, concluido) 
             VALUES (:id_usuario, :titulo, :descricao, :data, :horario, :concluido)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id_usuario', $id_usuario);
+        $stmt->bindValue(':id_usuario', $post->id_usuario);
         $stmt->bindValue(':titulo', $post->titulo);
         $stmt->bindValue(':descricao', $post->descricao);
         $stmt->bindValue(':data', $post->data);

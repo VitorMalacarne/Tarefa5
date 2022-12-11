@@ -1,7 +1,6 @@
 <?php
-require_once("../database/connection.inc.php");
-require_once("usuario.dao.php");
-@session_start();
+require_once '../api/database/connection.inc.php';
+require_once 'usuario.dao.php';
 
 $usuarioDAO = new UsuarioDAO($pdo);
 
@@ -12,6 +11,9 @@ $json = file_get_contents('php://input');
 $dadosUsuario = json_decode($json);
 
 $response = "";
+
+echo $dadosUsuario->email;
+
 
 if(empty($usuarioDAO->getUsuarioByEmail(@$dadosUsuario->email))){
             
