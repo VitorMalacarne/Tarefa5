@@ -65,7 +65,7 @@ class AfazerDAO
 
         return $stmt->execute($data);
     }
-    */
+
     public function delete($id) {
         $sql = "DELETE from tb_usuario WHERE id = ?";
 
@@ -75,5 +75,5 @@ class AfazerDAO
         $stmt->execute();
 
         return $stmt->rowCount();
-    }
+    }*/
 }
