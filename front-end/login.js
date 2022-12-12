@@ -70,7 +70,7 @@ function CadastrarUsuario(){
     console.log("Nascimento: " + nascimento);
     var arrayFormData = {};
     dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
-	arrayFormData["token"] = token;
+	//arrayFormData["token"] = token;
     var json = JSON.stringify(arrayFormData);
     console.log(json)
     request = new XMLHttpRequest()

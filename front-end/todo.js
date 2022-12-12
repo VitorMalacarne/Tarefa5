@@ -122,7 +122,8 @@ function listarAfazer() {
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
 
-            var resposta = JSON.parse(this.responseText);
+            let resposta = JSON.parse(this.responseText);
+            console.log("Essa é a resposta: "+resposta[5].id)
             // Verifica se a resposta é uma array vazia
             if(resposta.length === 0) {
                 response.innerHTML = "Não há afazeres";
@@ -131,6 +132,7 @@ function listarAfazer() {
                 listaAfazeres.innerHTML = "";
                 for(var i=0;i<resposta.length;i++){
                     var ul = document.createElement("ul");
+                    var idAfazer = resposta[i].id;
 
                     var item = document.createElement("li");
                     var textnode = document.createTextNode("Título: "+resposta[i].titulo);
@@ -154,14 +156,14 @@ function listarAfazer() {
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
-                    item.addEventListener('click', () => {
-                        editar(resposta[i].id);
+                    item.addEventListener('click', (idAfazer) => {
+                        editar(idAfazer);
                     })
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "deletar";
-                    item.addEventListener('click', () => {
-                        deletar(resposta[i].id);
+                    item.addEventListener('click', (idAfazer) => {
+                        deletar(idAfazer);
                     })
                     ul.appendChild(item);
 
@@ -173,9 +175,22 @@ function listarAfazer() {
     request.send(json)
 }
 
-
 function editar(id_afazer){
     console.log("Teste editar");
+    var json = JSON.stringify({id_afazer, token});
+    request = new XMLHttpRequest()
+    request.open("POST", API_URL+"todo/edit.php", true)
+    request.setRequestHeader("Content-type", "application/json")
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            // Print received data from server
+            response.innerHTML = this.responseText;
+
+        }
+    };
+    request.send(json);
+    listarAfazer();
+    listarAfazer();
 }
 
 function deletar(id_afazer) {
