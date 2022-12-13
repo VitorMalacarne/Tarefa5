@@ -154,7 +154,7 @@ function listarAfazer() {
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
-                    item.setAttribute("class", "editar")/***************/
+                    item.className = "editar"/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
                     })
@@ -195,7 +195,7 @@ function editar(id_afazer){
     var json = JSON.stringify(arrayFormData);
     console.log(json)
     request = new XMLHttpRequest()
-    request.open("POST", API_URL+"todo/editar.php", true)
+    request.open("POST", API_URL+"todo/edit.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
@@ -240,6 +240,14 @@ function deletar(id_afazer) {
     request.send(json);
     listarAfazer();
     listarAfazer();
+}
+
+function getAfazer() {
+
+
+
+    console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
+
 }
 
 
