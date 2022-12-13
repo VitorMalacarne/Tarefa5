@@ -122,7 +122,7 @@ function listarAfazer() {
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
         
-            var resposta = JSON.stringify(this.responseText);
+            var resposta = JSON.parse(this.responseText);
             // Verifica se a resposta é uma array vazia
             if(resposta.length === 0) {
                 response.innerHTML = "Não há afazeres";
@@ -164,15 +164,6 @@ function listarAfazer() {
                     item.setAttribute("class", "deletar")/***************/
                     item.addEventListener('click', (idAfazer) => {
                         deletar(idAfazer);
-                    })
-                    item.addEventListener('click', () => {
-                        editar(resposta[i].id);
-                    })
-                    ul.appendChild(item);
-                    item = document.createElement("button");
-                    item.innerHTML = "deletar";
-                    item.addEventListener('click', () => {
-                        deletar(resposta[i].id);
                     })
                     ul.appendChild(item);
                 
