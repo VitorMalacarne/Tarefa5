@@ -54,6 +54,9 @@ try {
     $responseBody = '{ "message": "Ocorreu um erro ao tentar executar esta ação. Erro: Código: ' .  $e->getCode() . '. Mensagem: ' . $e->getMessage() . '" }';
 }
 
+
+
+
 // Defique que o conteúdo da resposta será um JSON (application/JSON)
 header('Content-Type: application/json');
 
