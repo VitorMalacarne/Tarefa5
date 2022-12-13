@@ -122,7 +122,7 @@ function listarAfazer() {
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
         
-            var resposta = JSON.parse(this.responseText);
+            var resposta = JSON.stringify(this.responseText);
             // Verifica se a resposta é uma array vazia
             if(resposta.length === 0) {
                 response.innerHTML = "Não há afazeres";
