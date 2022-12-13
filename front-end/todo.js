@@ -156,12 +156,14 @@ function listarAfazer() {
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
+                    item.setAttribute("class", "editar")/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
                     })
                     ul.appendChild(item);
                     item = document.createElement("button");
-                    item.innerHTML = "deletar";
+                    item.innerHTML = "Deletar";
+                    item.setAttribute("class", "deletar")/***************/
                     item.addEventListener('click', (idAfazer) => {
                         deletar(idAfazer);
                     })
@@ -176,7 +178,36 @@ function listarAfazer() {
 }
 
 function editar(id_afazer){
-    console.log("Teste editar");
+
+    var resposta = document.getElementById("response")
+    form = document.getElementById("formAfazer");
+    dadosForm = new FormData(form)
+    var titulo = dadosForm.get("titulo")
+    var descricao = dadosForm.get("descricao")
+    var data = dadosForm.get("data")
+    console.log("Titulo: " + titulo);
+    console.log("Descrição: " + descricao);
+    console.log("Data: " + data);
+    console.log("Alo?");
+    var arrayFormData = {};
+    dadosForm.forEach((valor, nome) => arrayFormData[nome] = valor);
+    arrayFormData["token"] = token;
+    arrayFormData["id_afazer"] = id_afazer;
+    var json = JSON.stringify(arrayFormData);
+    console.log(json)
+    request = new XMLHttpRequest()
+    request.open("POST", API_URL+"todo/editar.php", true)
+    request.setRequestHeader("Content-type", "application/json")
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            response.innerHTML = this.responseText;
+        }
+    };
+    request.send(json);
+    listarAfazer();
+    listarAfazer();
+
+    /*console.log("Teste editar");
     var json = JSON.stringify({id_afazer, token});
     request = new XMLHttpRequest()
     request.open("POST", API_URL+"todo/edit.php", true)
@@ -190,7 +221,7 @@ function editar(id_afazer){
     };
     request.send(json);
     listarAfazer();
-    listarAfazer();
+    listarAfazer();*/
 }
 
 function deletar(id_afazer) {
@@ -214,35 +245,3 @@ function deletar(id_afazer) {
 
 verificarUsuario();
 listarAfazer();
-
-/*<?php else: ?>
-<?php foreach($acomodacoes as $index => $acomodacao): ?>
-    <div class="card">
-        <ul>
-            <li>
-                <p><?= @$acomodacao->tipo_acomodacao ?></p>
-                
-            </li>
-            <li>
-                <p><?= @$acomodacao->tipo_apartamento ?></p>
-                
-            </li>
-            <li>
-                <p><?= @$acomodacao->qtd_camas_casal ?> cama(s) de casal</p>
-            </li>
-            <li>
-                <p><?= @$acomodacao->qtd_camas_solteiro ?> cama(s) de solteiro</p>
-            </li>
-
-        </ul>
-        <?php if(empty($_SESSION) !== true): ?>
-        <form action="../view_adm/ctrl_reserva.php?action=reservar&qtd_adultos=<?= @$_REQUEST['qtd_adultos']?>&qtd_criancas=<?= @$_REQUEST['qtd_criancas']?>&data_entrada=<?= @$_REQUEST['data_entrada']?>&data_saida=<?= @$_REQUEST['data_saida']?>" method="post">
-            <input type="hidden" name="id_acomodacao" value="<?= $acomodacao->id ?>">
-            <input type="hidden" name="id_tarifa" value="<?= @$acomodacao->id_tarifa ?>">
-            <input type="submit" value="Reservar">
-        </form>
-        <?php endif; ?>
-        
-    </div>
-<?php endforeach; ?>
-<?php endif; ?>*/

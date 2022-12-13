@@ -32,7 +32,7 @@ $token = $dadosAfazer->token;
 
 $dadosAfazer->id_usuario = $decoded['id_usuario'];
 
-$response = $afazerDAO->insert($dadosAfazer);
+$response = $afazerDAO->update($dadosAfazer);
 
 if(!$response) {
     echo "Erro ao salvar afazer";

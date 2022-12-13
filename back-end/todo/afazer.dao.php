@@ -40,34 +40,31 @@ class AfazerDAO
         $stmt->bindValue(':concluido', $post->concluido);
 
         return $stmt->execute();
-        /*$user = clone $user;
-
-        $user->id = $this->pdo->lastInsertId();
-
-        return $user;*/
     }
-    /*
-    public function update($id, $user) {
+    
+    public function update($post) {
 
-        $sql = "UPDATE tb_usuario SET
-            nome = :nome,
-            telefone = :telefone,
-            email = :email
+        $sql = "UPDATE tb_afazer SET
+            titulo = :titulo,
+            descricao = :descricao,
+            data = :data,
+            horario = :horario;
+            concluido = :concluido
         WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':titulo', $post['titulo']);
+        $stmt->bindValue(':descricao', $post['descricao']);
+        $stmt->bindValue(':data', $post['data']);
+        $stmt->bindValue(':horario', $post['horario']);
+        $stmt->bindValue(':concluido', $post['concluido']);
+        //$stmt->bindValue(':id', $post['id']);
 
-        $data = [
-            'id' => $id,
-            'nome' => $user->nome,
-            'email' => $user->email,
-        ];
-
-        return $stmt->execute($data);
+        return $stmt->execute();
     }
-    */
+    
     public function delete($id) {
-        $sql = "DELETE from tb_usuario WHERE id = ?";
+        $sql = "DELETE from tb_afazer WHERE id = ?";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(1, $id);
