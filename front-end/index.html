@@ -1,168 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Login</title>
-    <style>
-        .modal-header, h4, .close {
-          	background-color: #2D53FE;
-          	color:white !important;
-          	text-align: center;
-          	font-size: 30px;
-        }
-        .modal-footer {
-          	background-color: #f9f9f9;
-        }
-    
-        </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+  <title>Login</title>
+  <style>
+    .modal-header, .close
+    {
+      background-color: #2D53FE;
+      color: white !important;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0px;
+    }
+
+    #myBtn,
+    #btncad {
+      min-width: 250px;
+      min-height: 60px;
+    }
+
+    .modal-footer {
+      background-color: #f9f9f9;
+    }
+
+    img {
+      max-height: 400px;
+    }
+  </style>
 </head>
-<body style="background-image: linear-gradient(to right, blue,#3A19F7,#2D53FE, rgb(24, 106, 228), #3589E6 )">
-    
-    <header> <h1 class="mx-auto text-white pt-5" style="width: 400px;  font-size: 70px;">My TO-Dos!</h1></header>
-    <div class="mx-auto text-white" style="width: 500px; font-size: 30px; --bs-text-opacity: .5;">
-        <p>Organize suas tarefas facilmente</p> 
+
+<script src="login.js" defer> </script>
+
+<body class="d-flex bg-primary bg-gradient-right justify-content-center">
+
+  <main>
+    <div class="d-flex align-items-center flex-column p-3">
+      <h1 class="display-1 text-white fw-bold">My To-Dos!</h1>
+      <h4 class="lead text-white fs-1"> Organize suas tarefas facilmente</h4>
     </div>
+    <div class="d-flex align-items-center flex-column p-3 gap-2">
+      <button type="button" class="btn btn-dark btn-lg" id="myBtn">Login</button>
+      <button type="button" class="btn btn-default btn-lg" id="btncad">Cadastro</button>
+    </div>
+    <a class="text-white p-3 fs-5" href="todo.html">Ver minha lista de afazeres</a>
     
-    <div class="container">
-        
-        <button type="button" class="btn btn-dark btn-lg" id="myBtn">Login</button>
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-          
-            
-            <div class="modal-content">
-              	<div class="modal-header" style="padding:10px 50px;">
-                <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-              	</div>
-              	<div class="modal-body" style="padding:40px 50px;">
-                <form role="form" id="formLogin">
-                  	<div class="form-group">
-                    	<label for="email"><span class="glyphicon glyphicon-user"></span> Usuário</label>
-                    	<input type="email" class="form-control" name="email" id="frm_login_email" placeholder="E-mail">
-                  	</div>
-                  	<div class="form-group">
-                    	<label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                    	<input type="password" class="form-control" name="senha" id="frm_login_senha" placeholder="********">
-                  	</div>
-                    <button type="button" value="Login" onclick="login();" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-               
-				</form>
-              	</div>
-              	<div class="modal-footer">
-                	<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-              	</div>
-              </div>
-              
-            </div>
-          </div> 
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="luxo.png" alt="Chania">
+      </div>
+
+        <div class="item">
+          <img src="standart.png" alt="Chania">
         </div>
-        
-        <script src="login.js" defer> </script>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+  </main>
 
-      
-      <div class="container">
-        
-        <button type="button" class="btn btn-default btn-lg" id="btncad">Cadastro</button>
-        <div class="modal fade" id="modalcad" role="dialog">
-          <div class="modal-dialog">
-          
-            
-            <div class="modal-content">
-              <div class="modal-header" style="padding:10px 50px;">
-                <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
-              </div>
-              <div class="modal-body" style="padding:40px 50px;">
-                <form role="form" id="formCadastro">
-                    <div class="form-group">
-                        <label for="nome"><span class="glyphicon glyphicon-user"></span> Nome</label>
-                        <input type="text" class="form-control" name="nome" placeholder="Nome" autocomplete="on">
-                      </div>
-                    <div class="form-group">
-                    <label for="email"><span class="glyphicon-envelope"></span> E-mail</label>
-                    <input type="text" class="form-control" name="email" placeholder="E-mail" autocomplete="on">
-                  </div>
-                  <div class="form-group">
-                    <label for="nascimento"><span class="glyphicon glyphicon-calendar"></span> Nascimento</label>
-                    <input type="date" class="form-control" name="nascimento" placeholder="Data de nascimento" autocomplete="on">
-                  </div>
-                  <div class="form-group">
-                    <label for="type"><span class="glyphicon glyphicon-user"></span>Tipo</label>
-                    <select name="type" class="form-control" autocomplete="on">
-						          <option value="" disabled selected hidden>Selecione</option>	
-						          <option value="0">Usuário</option>
-						          <option value="1">Administrador</option>
-						        </select>
-                  </div>
-                <div class="form-group">
-                  <div class="form-group">
-                    <label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
-                    <input type="password" class="form-control" name="senha" placeholder="********" autocomplete="on">
-                  </div>
-                    <button type="button"  id="confirmar" value="Cadastrar usuário" onclick="CadastrarUsuario();" class="btn btn-primary btn-block" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span> Login</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-              </div>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:10px 50px;">
+          <h4><span class="npm i bi-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" id="formLogin">
+            <div class="form-group">
+              <label for="email"><span class="npm i bi-person-fill"></span> Usuário</label>
+              <input type="email" class="form-control" name="email" id="frm_login_email" placeholder="E-mail">
             </div>
-            
-          </div>
-        </div> 
-      </div>
-       
-      <script>
-      $(document).ready(function(){
-        $("#myBtn").click(function(){
-          $("#myModal").modal();
-        });
-        });
-        
-      $(document).ready(function(){
-        $("#btncad").click(function(){
-          $("#modalcad").modal();
-        });
-        });
-        
-
-      </script>
-  <section>
-      <!-- Carousel -->
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-    <!-- Indicators/dots -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    </div>
-
-    <!-- The slideshow/carousel -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="" alt="" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="" alt="" class="d-block w-100">
+            <div class="form-group">
+              <label for="senha"><span class="npm i bi-eye-fill"></span> Senha</label>
+              <input type="password" class="form-control" name="senha" id="frm_login_senha" placeholder="********">
+            </div>
+            <button type="button" value="Login" onclick="login();" class="btn btn-primary btn-block"><span
+                class="npm i bi-power"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
+              class="npm i bi-x"></span> Cancelar</button>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Left and right controls/icons -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+  <div class="modal fade" id="modalcad" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header" style="padding:10px 50px;">
+          <h4><span class="glyphicon glyphicon-lock"></span> Cadastro</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" id="formCadastro">
+            <div class="form-group">
+              <label for="nome"><span class="glyphicon glyphicon-user"></span> Nome</label>
+              <input type="text" class="form-control" name="nome" placeholder="Nome" autocomplete="on">
+            </div>
+            <div class="form-group">
+              <label for="email"><span class="glyphicon-envelope"></span> E-mail</label>
+              <input type="text" class="form-control" name="email" placeholder="E-mail" autocomplete="on">
+            </div>
+            <div class="form-group">
+              <label for="nascimento"><span class="glyphicon glyphicon-calendar"></span> Nascimento</label>
+              <input type="date" class="form-control" name="nascimento" placeholder="Data de nascimento"
+                autocomplete="on">
+            </div>
+            <div class="form-group">
+              <label for="type"><span class="glyphicon glyphicon-user"></span>Tipo</label>
+              <select name="type" class="form-control" autocomplete="on">
+                <option value="" disabled selected hidden>Selecione</option>
+                <option value="0">Usuário</option>
+                <option value="1">Administrador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="senha"><span class="glyphicon glyphicon-eye-open"></span> Senha</label>
+                <input type="password" class="form-control" name="senha" placeholder="********" autocomplete="on">
+              </div>
+              <button type="button" id="confirmar" value="Cadastrar usuário" onclick="CadastrarUsuario();"
+                class="btn btn-primary btn-block" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span>
+                Cadastrar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
+              class="glyphicon glyphicon-remove"></span> Cancelar</button>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
 
-   <div id="response" class="container p-5 my-5 bg-success text-white">Resposta</div>
-   <div class="container bg-success" id="acessar_todo" hidden><a href="todo.html" class="text-white">Ver minhas to-dos</a></div>
+  <script>
+    $(document).ready(function () {
+      $("#myBtn").click(function () {
+        $("#myModal").modal();
+      });
+    });
+
+    $(document).ready(function () {
+      $("#btncad").click(function () {
+        $("#modalcad").modal();
+      });
+    });
+
+
+  </script>
+
+  <div id="response" class="container p-5 my-5 bg-success text-white">Resposta</div>
+  <div class="container bg-success" id="acessar_todo" hidden>
 
 </body>
+
 </html>
