@@ -181,8 +181,8 @@ function buttonEditar() {
 }
 
 function buttonDeletar() {
-    var idAfazer = this.resposta[i].id_afazer;
-    deletar(idAfazer);
+    //var idAfazer = this.resposta[i].id_afazer;
+    //deletar(idAfazer);
     console.log("Epa")
 
 
