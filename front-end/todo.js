@@ -165,11 +165,9 @@ function listarAfazer() {
                     item.innerHTML = "Deletar";
                     item.className = "deletar"/***************/
                     item.className = "id"+i/***************/
-                    item.addEventListener('click', (idAfazer) => {
-                        deletar(idAfazer);
-                    })
+                    item.addEventListener('click', buttonDeletar(resposta[i].idAfazer));
                     ul.appendChild(item);
-                
+                    
                     listaAfazeres.appendChild(ul);
                 }
             }
@@ -178,6 +176,17 @@ function listarAfazer() {
     request.send(json)
 }
 
+function buttonEditar() {
+    
+}
+
+function buttonDeletar() {
+    var idAfazer = this.resposta[i].id_afazer;
+    deletar(idAfazer);
+    console.log("Epa")
+
+
+}
 
 function editar(id_afazer){
 
