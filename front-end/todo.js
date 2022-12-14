@@ -155,6 +155,7 @@ function listarAfazer() {
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
                     item.className = "editar"/***************/
+                    item.className = "id"+i/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
                         getAfazer();
@@ -162,7 +163,8 @@ function listarAfazer() {
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Deletar";
-                    item.setAttribute("class", "deletar")/***************/
+                    item.className = "deletar"/***************/
+                    item.className = "id"+i/***************/
                     item.addEventListener('click', (idAfazer) => {
                         deletar(idAfazer);
                     })
@@ -248,6 +250,7 @@ function getAfazer() {
 
 
     console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
+    
 
 }
 
