@@ -20,7 +20,7 @@ $token = $dadosAfazer->token;
         $decoded = JwtUtil::decode($token, JWT_SECRET_KEY);
     } else {
         http_response_code(401); // Não autorizado
-        $responseBody = '{ "message": "Sem token"}';
+        $responseBody = '{"message": "Sem token"}';
     }
 
     // Se existir $responseBody == não está autorizado
@@ -32,10 +32,12 @@ $token = $dadosAfazer->token;
 
 $response = $afazerDAO->delete($dadosAfazer->id_afazer);
 
+//require_once("dede.lkl");
+
 if(!$response) {
-    echo "Erro ao salvar afazer";
+    $responseBody = '{"message": "Erro ao deletar afazer"}';
 } else {
-    echo 'Salvou!';
+    $responseBody = '{"message": "DELETOUAEWFUKHDBKLFASDHBFKJAEBFJKLE"}';
 }
 
 /*$responseBody = '';

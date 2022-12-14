@@ -89,20 +89,25 @@ function verificarUsuario() {
         request.open("POST", API_URL+"user/decoder.php", true)
         request.setRequestHeader("Content-type", "application/json")
         request.onreadystatechange = function () {
-            if (request.readyState === 4 && request.status === 200) {
+            /*console.log("Essa é a resposta: "+this.responseText);
+            let stringfyResponse = JSON.stringify(this.responseText);
+            let obj = this.responseText//JSON.parse(stringfyResponse);
+            console.log("stringfy"+obj);
             
-                console.log("Essa é a resposta: ")
+            document.getElementById("usuario_ativo").innerHTML = obj.nome;
+            document.getElementById("tipo_usuario").innerHTML = obj.type;
             
+            if (request.readyState === 4 && request.status === 200/* response.result && response.result === true) {
+                console.log("DEntro da request do verificarusuario")
                 document.getElementById("response_verifica").innerHTML = this.responseText
                 var resposta = this.responseText;
                 
                 console.log(resposta);
                 console.log(resposta);
-                /*let obj = JSON.parse(resposta);
                 console.log("Teste"+obj.nome)
                 document.getElementById("usuario_ativo").innerHTML(resposta.nome);
-                document.getElementById("tipo_usuario").innerHTML(resposta.type);*/
-            }
+                document.getElementById("tipo_usuario").innerHTML(resposta.type);
+            }*/
         };
         request.send(json);
     }
@@ -131,7 +136,10 @@ function listarAfazer() {
                 listaAfazeres.innerHTML = "";
                 for(var i=0;i<resposta.length;i++){
                     var ul = document.createElement("ul");
+
+                    var idAfazer = resposta[i].id;
                 
+                    //console.log("Olha só, esse aqui é o id desta tarfea: "+idAfazer)
                     var item = document.createElement("li");
                     var textnode = document.createTextNode("Título: "+resposta[i].titulo);
                     item.appendChild(textnode);
@@ -155,7 +163,7 @@ function listarAfazer() {
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
                     item.className = "editar"/***************/
-                    item.className = "id"+i/***************/
+                    item.className = idAfazer/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
                         getAfazer();
@@ -164,8 +172,10 @@ function listarAfazer() {
                     item = document.createElement("button");
                     item.innerHTML = "Deletar";
                     item.className = "deletar"/***************/
-                    item.className = "id"+i/***************/
-                    item.addEventListener('click', buttonDeletar(resposta[i].idAfazer));
+                    item.className = idAfazer/***************/
+                    item.addEventListener('click', () => {
+                        deletar(idAfazer);
+                    });
                     ul.appendChild(item);
                     
                     listaAfazeres.appendChild(ul);
@@ -181,8 +191,8 @@ function buttonEditar() {
 }
 
 function buttonDeletar() {
-    //var idAfazer = this.resposta[i].id_afazer;
     //deletar(idAfazer);
+    console.log("Opa, estou dentro de buttonDeletar, e esse é o afazer: "+this.idAfazer);
     console.log("Epa")
 
 
@@ -238,14 +248,17 @@ function editar(id_afazer){
 
 function deletar(id_afazer) {
     console.log("Teste deletar");
+    console.log("Este é o id: "+id_afazer);
     var json = JSON.stringify({token, id_afazer});
     request = new XMLHttpRequest()
     request.open("POST", API_URL+"todo/delete.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
+        console.log("DELETOU!!!");
+        response.innerHTML = "Afazer deletado";
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
-            response.innerHTML = this.responseText;
+            console.log("DEntro de request.readystatedekik")
 
         }
     };
