@@ -157,6 +157,7 @@ function listarAfazer() {
                     item.className = "editar"/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
+                        getAfazer();
                     })
                     ul.appendChild(item);
                     item = document.createElement("button");
