@@ -18,19 +18,18 @@ function login() {
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
         //console.log(request);
+        var resposta = this.response;
+        console.log(resposta)
         
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
-            var resposta = this.response;
             response.innerHTML = this.responseText;
-            console.log(JSON.parse("{\"name\":\"alan\",\"age\":34}"));
+            //console.log(JSON.parse("{\"name\":\"alan\",\"age\":34}"));
             
-            console.log(typeof(resposta));
+            //console.log(typeof(resposta));
             //dataType: 'json'
             //response.setRequestHeader("Content-type", "application/json");
             let obj = JSON.parse(resposta);
-            
-            
             
             //var obj = rawResponse.json();
             

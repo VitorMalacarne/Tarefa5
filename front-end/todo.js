@@ -131,7 +131,10 @@ function listarAfazer() {
                 listaAfazeres.innerHTML = "";
                 for(var i=0;i<resposta.length;i++){
                     var ul = document.createElement("ul");
+
+                    var idAfazer = resposta[i].id;
                 
+                    //console.log("Olha só, esse aqui é o id desta tarfea: "+idAfazer)
                     var item = document.createElement("li");
                     var textnode = document.createTextNode("Título: "+resposta[i].titulo);
                     item.appendChild(textnode);
@@ -155,7 +158,7 @@ function listarAfazer() {
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
                     item.className = "editar"/***************/
-                    item.className = "id"+i/***************/
+                    item.className = idAfazer/***************/
                     item.addEventListener('click', (idAfazer) => {
                         editar(idAfazer);
                         getAfazer();
@@ -164,8 +167,10 @@ function listarAfazer() {
                     item = document.createElement("button");
                     item.innerHTML = "Deletar";
                     item.className = "deletar"/***************/
-                    item.className = "id"+i/***************/
-                    item.addEventListener('click', buttonDeletar(resposta[i].idAfazer));
+                    item.className = idAfazer/***************/
+                    item.addEventListener('click', () => {
+                        deletar(idAfazer);
+                    });
                     ul.appendChild(item);
                     
                     listaAfazeres.appendChild(ul);
@@ -181,8 +186,8 @@ function buttonEditar() {
 }
 
 function buttonDeletar() {
-    //var idAfazer = this.resposta[i].id_afazer;
     //deletar(idAfazer);
+    console.log("Opa, estou dentro de buttonDeletar, e esse é o afazer: "+this.idAfazer);
     console.log("Epa")
 
 
@@ -238,11 +243,13 @@ function editar(id_afazer){
 
 function deletar(id_afazer) {
     console.log("Teste deletar");
+    console.log("Este é o id: "+id_afazer);
     var json = JSON.stringify({token, id_afazer});
     request = new XMLHttpRequest()
     request.open("POST", API_URL+"todo/delete.php", true)
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
+        console.log("DELETOU!!!");
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
             response.innerHTML = this.responseText;
