@@ -70,6 +70,8 @@ class AfazerDAO
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(1, $id);
 
+        //require_once($id);
+
         $stmt->execute();
 
         return $stmt->rowCount();

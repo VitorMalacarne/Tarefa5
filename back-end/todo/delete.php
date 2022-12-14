@@ -32,7 +32,7 @@ $token = $dadosAfazer->token;
 
 $response = $afazerDAO->delete($dadosAfazer->id_afazer);
 
-require_once("dede.lkl")
+//require_once("dede.lkl");
 
 if(!$response) {
     $responseBody = '{"message": "Erro ao deletar afazer"}';

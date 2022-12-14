@@ -30,12 +30,12 @@ $token = $dadosJSON->token;
 $nome = $decoded['nome'];
 $type = $decoded['type'];
 
-$responseBody = "{\"nome\":\"$nome\",\"type\":\"$type\" }";
+//$responseBody = "{\"nome\":\"$nome\",\"type\":\"$type\" }";
 //$responseBody = "{\"token\":\"$jwt\",\"id_usuario\":\"$id_usuario\",\"nome\":\"$nome\" }";
-/*
+
 $arrayJSON = array('nome'=>$nome, 'type'=>$type);
 $jsonFile = json_encode($arrayJSON);
-$responseBody = $jsonFile;*/
+$responseBody = $jsonFile;
 
 // Defique que o conteúdo da resposta será um JSON (application/JSON)
 header('Content-Type: application/json');

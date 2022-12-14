@@ -89,13 +89,15 @@ function verificarUsuario() {
         request.open("POST", API_URL+"user/decoder.php", true)
         request.setRequestHeader("Content-type", "application/json")
         request.onreadystatechange = function () {
-            console.log("Essa é a resposta: "+this.responseText);
+            /*console.log("Essa é a resposta: "+this.responseText);
+            let stringfyResponse = JSON.stringify(this.responseText);
+            let obj = this.responseText//JSON.parse(stringfyResponse);
+            console.log("stringfy"+obj);
             
-            if (request.readyState === 4 && request.status === 200/* response.result && response.result === true*/) {
-                
-                let obj = JSON.parse(this.responseText);
-                document.getElementById("usuario_ativo").innerHTML(resposta.nome);
-                document.getElementById("tipo_usuario").innerHTML(resposta.type);
+            document.getElementById("usuario_ativo").innerHTML = obj.nome;
+            document.getElementById("tipo_usuario").innerHTML = obj.type;
+            
+            if (request.readyState === 4 && request.status === 200/* response.result && response.result === true) {
                 console.log("DEntro da request do verificarusuario")
                 document.getElementById("response_verifica").innerHTML = this.responseText
                 var resposta = this.responseText;
@@ -105,7 +107,7 @@ function verificarUsuario() {
                 console.log("Teste"+obj.nome)
                 document.getElementById("usuario_ativo").innerHTML(resposta.nome);
                 document.getElementById("tipo_usuario").innerHTML(resposta.type);
-            }
+            }*/
         };
         request.send(json);
     }
@@ -253,10 +255,10 @@ function deletar(id_afazer) {
     request.setRequestHeader("Content-type", "application/json")
     request.onreadystatechange = function () {
         console.log("DELETOU!!!");
+        response.innerHTML = "Afazer deletado";
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
             console.log("DEntro de request.readystatedekik")
-            response.innerHTML = this.responseText;
 
         }
     };
