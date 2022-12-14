@@ -89,19 +89,22 @@ function verificarUsuario() {
         request.open("POST", API_URL+"user/decoder.php", true)
         request.setRequestHeader("Content-type", "application/json")
         request.onreadystatechange = function () {
-            if (request.readyState === 4 && request.status === 200) {
+            console.log("Essa é a resposta: "+this.responseText);
             
-                console.log("Essa é a resposta: ")
-            
+            if (request.readyState === 4 && request.status === 200/* response.result && response.result === true*/) {
+                
+                let obj = JSON.parse(this.responseText);
+                document.getElementById("usuario_ativo").innerHTML(resposta.nome);
+                document.getElementById("tipo_usuario").innerHTML(resposta.type);
+                console.log("DEntro da request do verificarusuario")
                 document.getElementById("response_verifica").innerHTML = this.responseText
                 var resposta = this.responseText;
                 
                 console.log(resposta);
                 console.log(resposta);
-                /*let obj = JSON.parse(resposta);
                 console.log("Teste"+obj.nome)
                 document.getElementById("usuario_ativo").innerHTML(resposta.nome);
-                document.getElementById("tipo_usuario").innerHTML(resposta.type);*/
+                document.getElementById("tipo_usuario").innerHTML(resposta.type);
             }
         };
         request.send(json);
@@ -252,6 +255,7 @@ function deletar(id_afazer) {
         console.log("DELETOU!!!");
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
+            console.log("DEntro de request.readystatedekik")
             response.innerHTML = this.responseText;
 
         }
