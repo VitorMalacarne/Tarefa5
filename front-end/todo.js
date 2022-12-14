@@ -162,19 +162,37 @@ function listarAfazer() {
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
-                    item.className = "editar"/***************/
-                    item.className = idAfazer/***************/
-                    item.addEventListener('click', () => {
+                    item.classList.add("edit")/***************/
+					item.classList.add(idAfazer)/***************/
+                    item.classList.add("btn")/***************/
+                    item.classList.add("bg-primary")/***************/
+                    item.classList.add("btn-lg")/***************/
+                    item.classList.add("glyphicon")/***************/
+                    item.classList.add("glyphicon-plus")/***************/
+                    item.setAttribute("data-toggle", "modal");
+                    item.setAttribute("data-target", "#editmodal");
+					
+                    /*item.addEventListener('click', () => {
                         editar(resposta);
-                    })
+                    })*/
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Deletar";
-                    item.className = "deletar"/***************/
-                    item.className = idAfazer/***************/
+					item.classList.add("deletar")/***************/
+					item.classList.add(idAfazer)/***************/
+                    item.classList.add("btn")/***************/
+                    item.classList.add("bg-primary")/***************/
+                    item.classList.add("btn-lg")/***************/
+                    item.classList.add("glyphicon")/***************/
+                    item.classList.add("glyphicon-plus")/***************/
                     item.addEventListener('click', () => {
                         deletar(idAfazer);
                     });
+
+
+					// data-toggle="modal" id="newtask" data-target="#modaltask">Novo</button>
+
+
                     ul.appendChild(item);
                     
                     listaAfazeres.appendChild(ul);
@@ -265,7 +283,7 @@ function buttonDeletar() {
 }
 
 function editar(afazer){
-
+	/*
     var resposta = document.getElementById("response")
     form = document.getElementById("formAfazer");
     document.getElementById("nome").innerHTML = 

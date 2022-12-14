@@ -62,7 +62,7 @@
 	<main class="m-5">
 		<div class="d-flex gap-5">
 			<h2>Meus afazeres</h2>
-			<button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="newtask">Novo</button>
+			<button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" data-toggle="modal" id="newtask" data-target="#modaltask">Novo</button>
 		</div>
 		<hr>
 		<div id="response">Resposta:</div>
@@ -79,7 +79,7 @@
 	<div class="container" id="container">
 		<h2>Meus Afazeres</h2>
 
-		<div class="modal fade" id="modaltask" role="dialog">
+		<div class="modal fade" id="modaltask" role="dialog" tabindex="-1" aria-labelledby="modaltask" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header" style="padding:10px 50px;">
@@ -130,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="editmodal" role="dialog">
+	<div class="modal fade" id="editmodal" role="dialog" tabindex="-1" aria-labelledby="modaltask" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header" style="padding:10px 50px;">
@@ -182,20 +182,20 @@
 		</div>
 	</div>
 	
+	<button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="edit">Editar</button>
 	<script>
-		//<button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="edit">Editar</button>
-		$(document).ready(function () {
+		/*$(document).ready(function () {
 			$("#newtask").click(function () {
 				$("#modaltask").modal();
 			});
 		});
 
 		$(document).ready(function () {
-			$("#edit").click(function () {
+			$(".edit").click(function () {
 				$("#editmodal").modal();
 			});
 		});
-
+		*/
 	</script>
 
 </body>
