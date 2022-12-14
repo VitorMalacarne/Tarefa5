@@ -12,12 +12,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
   <title>Login</title>
   <style>
-    .modal-header, .close
+    .modal-header
     {
       background-color: #2D53FE;
       color: white !important;
       text-align: center;
       font-size: 30px;
+    }
+    .modal-body{
+      color: black;
     }
 
     body {
@@ -110,7 +113,7 @@
         <div class="modal-body" style="padding:40px 50px;">
           <form role="form" id="formLogin">
             <div class="form-group">
-              <label for="email"><span><i class="bi bi-envelope"></i></span> Usuário</label>
+              <label for="email"><span class="glyphicon glyphicon-user"></span> Usuário</label>
               <input type="email" class="form-control" name="email" id="frm_login_email" placeholder="E-mail">
             </div>
             <div class="form-group">
@@ -148,12 +151,12 @@
               <input type="text" class="form-control" name="email" placeholder="E-mail" autocomplete="on">
             </div>
             <div class="form-group">
-              <label for="nascimento"><span class="glyphicon glyphicon-calendar"></span> Nascimento</label>
+              <label for="nascimento"><span class="npm i bi-calendar-event"></span> Nascimento</label>
               <input type="date" class="form-control" name="nascimento" placeholder="Data de nascimento"
                 autocomplete="on">
             </div>
             <div class="form-group">
-              <label for="type"><span class="glyphicon glyphicon-user"></span>Tipo</label>
+              <label for="type"><span class="npm i bi-person-vcard"></span>Tipo</label>
               <select name="type" class="form-control" autocomplete="on">
                 <option value="" disabled selected hidden>Selecione</option>
                 <option value="0">Usuário</option>
@@ -166,7 +169,7 @@
                 <input type="password" class="form-control" name="senha" placeholder="********" autocomplete="on">
               </div>
               <button type="button" id="confirmar" value="Cadastrar usuário" onclick="CadastrarUsuario();"
-                class="btn btn-primary btn-block" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span>
+                class="btn btn-primary btn-block" data-dismiss="modal"><span class="npm i bi-person-plus-fill"></span>
                 Cadastrar</button>
           </form>
         </div>
