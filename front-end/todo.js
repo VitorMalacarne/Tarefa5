@@ -164,9 +164,8 @@ function listarAfazer() {
                     item.innerHTML = "Editar";
                     item.className = "editar"/***************/
                     item.className = idAfazer/***************/
-                    item.addEventListener('click', (idAfazer) => {
-                        editar(idAfazer);
-                        getAfazer();
+                    item.addEventListener('click', () => {
+                        editar(resposta);
                     })
                     ul.appendChild(item);
                     item = document.createElement("button");
@@ -179,6 +178,73 @@ function listarAfazer() {
                     ul.appendChild(item);
                     
                     listaAfazeres.appendChild(ul);
+
+
+
+
+
+
+
+
+					/*
+
+                    const tr = document.createElement('tr');
+                    const td = document.createElement('td');
+                    const div = document.createElement('div');
+                    const h3 = document.createElement('h3');
+                    const h5 = document.createElement('h5');
+                    const h6 = document.createElement('h6');
+                    const subdiv = document.createElement('div');
+        
+                    h3.innerHTML = e.titulo;
+                    h5.innerHTML = e.descricao;
+                    h6.innerHTML = "Programado para " + formatDate(e.data);
+                    div.classList.add("d-flex");
+                    div.classList.add("justify-content-between");
+                    subdiv.classList.add("d-flex");
+                    subdiv.classList.add("justify-content-center");
+                    subdiv.classList.add("p-2");
+                    subdiv.classList.add("rounded-pill");
+        
+                    const aux = calcTempo(e.data);
+        
+                    if(aux == 0){
+                        subdiv.innerHTML = "Hoje";
+                        subdiv.classList.add("bg-warning");
+                    }else if(aux == 1){
+                        subdiv.innerHTML = "Amanhã";
+                        subdiv.classList.add("bg-warning");
+                    }else if(aux < 0){
+                        subdiv.innerHTML = "Atrasado";
+                        subdiv.classList.add("bg-danger");
+                        subdiv.classList.add("text-white");
+                    }else {
+                        subdiv.innerHTML = "Daqui a " + calcTempo(e.data) + " dias";
+                        subdiv.classList.add("bg-secondary");
+                        subdiv.style = "--bs-bg-opacity: .5;";
+                    }
+        
+                    tr.setAttribute("data-bs-toggle", "modal");
+                    tr.setAttribute("data-bs-target", "#exampleModal");
+        
+                    div.appendChild(h3);
+                    div.appendChild(subdiv);
+        
+                    td.appendChild(div);
+                    td.appendChild(h5);
+                    td.appendChild(h6);
+        
+                    tr.appendChild(td);
+                    tarefas.appendChild(tr);
+
+					*/
+
+
+
+
+
+
+
                 }
             }
         }
@@ -198,10 +264,11 @@ function buttonDeletar() {
 
 }
 
-function editar(id_afazer){
+function editar(afazer){
 
     var resposta = document.getElementById("response")
     form = document.getElementById("formAfazer");
+    document.getElementById("nome").innerHTML = 
     dadosForm = new FormData(form)
     var titulo = dadosForm.get("titulo")
     var descricao = dadosForm.get("descricao")
