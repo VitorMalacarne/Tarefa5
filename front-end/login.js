@@ -5,7 +5,7 @@ var form
 localStorage.clear();
 
 function login() {
-    var resposta = document.getElementById("response");
+    //var resposta = document.getElementById("response");
     // FAz requisiçao para a API
 	const email = document.getElementById("frm_login_email").value;
 	const senha = document.getElementById("frm_login_senha").value;
@@ -23,7 +23,7 @@ function login() {
         
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
-            response.innerHTML = this.responseText;
+            //response.innerHTML = this.responseText;
             //console.log(JSON.parse("{\"name\":\"alan\",\"age\":34}"));
             
             //console.log(typeof(resposta));
@@ -37,13 +37,15 @@ function login() {
             console.log("Este é o token: " + obj.token);
             console.log("Este é o id_usuario: " + obj.id_usuario);
             console.log("Este é o nome: " + obj.nome);
-        
+            
             localStorage.setItem("token", obj.token);
             localStorage.setItem("id_usuario", obj.id_usuario);
             localStorage.setItem("nome", obj.nome);
             
             document.getElementById("acessar_todo").removeAttribute("hidden");
             
+        } else {
+            //document.getElementById("response").innerHTML = this.response
         }
     };
     request.send(json);

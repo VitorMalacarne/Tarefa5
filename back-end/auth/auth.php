@@ -46,11 +46,11 @@
             print_r($responseBody);
 
 
-        }else{
+        } else {
             http_response_code(401);//Status não auturozado
-            $responseBody = '{"message": "Credenciais inválidas" }';
-            header('Content-type: application/json');
-            print_r($responseBody);
+            echo 'Credenciais inválidas';
+            //header('Content-type: application/json');
+            //print_r($responseBody);
         }
     }
 

@@ -73,6 +73,7 @@ function cadastrarAfazer(){
     request.send(json);
     listarAfazer();
     listarAfazer();
+    listarAfazer();
 }
 
 function verificarUsuario() {
