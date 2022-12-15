@@ -79,12 +79,13 @@ function verificarUsuario() {
 
     if(token == null) {
         const container = document.getElementById("container");
-        document.createElement("a");
+        a = document.createElement("a");
 
         a.innerHTML = "Faça login para acessar as suas to-dos";
         a.classList.add("btn")/***************/
         a.classList.add("bg-danger")/***************/
         a.classList.add("btn")/***************/
+        a.setAttribute("href", "index.html");
         container.appendChild(a);
         //container.classList.add("glyphicon")/***************/
         //container.classList.add("glyphicon-plus")/***************/
@@ -247,6 +248,8 @@ function listarAfazer() {
                     subdiv.classList.add("justify-content-center");
                     subdiv.classList.add("p-2");
                     subdiv.classList.add("rounded-pill");
+                    subdiv.style.width = "75px";
+                    subdiv.style.height = "30px";
 
 
                     deleteButton.innerHTML = "Deletar";
@@ -257,6 +260,9 @@ function listarAfazer() {
                     deleteButton.classList.add("bg-danger")/***************/
                     deleteButton.classList.add("btn-lg")/***************/
                     deleteButton.classList.add("glyphicon")/***************/
+                    deleteButton.classList.add("npm")/***************/
+                    deleteButton.classList.add("i")/***************/
+                    deleteButton.classList.add("bi-trash-fill")/***************/
                     deleteButton.classList.add("glyphicon-plus")/***************/
                     /*item.addEventListener('click', () => {
                         buttonDeletar(this.id)
@@ -276,6 +282,9 @@ function listarAfazer() {
                     editButton.classList.add("btn-lg")/***************/
                     editButton.classList.add("glyphicon")/***************/
                     editButton.classList.add("glyphicon-plus")/***************/
+                    editButton.classList.add("npm")/***************/
+                    editButton.classList.add("i")/***************/
+                    editButton.classList.add("bi-pencil-square")/***************/
                     editButton.setAttribute("data-toggle", "modal");
                     editButton.setAttribute("data-target", "#editmodal");
                     /*item.addEventListener('click', () => {
@@ -287,27 +296,34 @@ function listarAfazer() {
                         return function(){
                             buttonEditar(afazer);
                         }
-                     })(afazer);
+                    })(afazer);
 
                      
+                    if(afazer.concluido == 0) {
                      
-                     
-                     const aux = calcularTempo(afazer.data);
-                     
-                     if(aux == 0){
-                         subdiv.innerHTML = "Hoje";
-                         subdiv.classList.add("bg-warning");
-                        }else if(aux == 1){
-                        subdiv.innerHTML = "Amanhã";
-                        subdiv.classList.add("bg-warning");
-                    }else if(aux < 0){
-                        subdiv.innerHTML = "Atrasado";
-                        subdiv.classList.add("bg-danger");
+                        const aux = calcularTempo(afazer.data);
+                        
+                        if(aux == 0){
+                             subdiv.innerHTML = "Hoje";
+                             subdiv.classList.add("bg-warning");
+                            } else if(aux == 1) {
+                            subdiv.innerHTML = "Amanhã";
+                            subdiv.classList.add("bg-warning");
+                        } else if(aux < 0) {
+                            subdiv.innerHTML = "Atrasado";
+                            subdiv.classList.add("bg-danger");
+                            subdiv.classList.add("text-white");
+                        } else {
+                            subdiv.innerHTML = "Daqui a " + calcularTempo(afazer.data) + " dias";
+                            subdiv.classList.add("bg-secondary");
+                            subdiv.style = "--bs-bg-opacity: .4;";
+                            subdiv.style.height = "30px"
+                        }
+                    } else {
+                        subdiv.innerHTML = "Concluido"
+                        subdiv.classList.add("bg-success")
                         subdiv.classList.add("text-white");
-                    }else {
-                        subdiv.innerHTML = "Daqui a " + calcularTempo(afazer.data) + " dias";
-                        subdiv.classList.add("bg-secondary");
-                        subdiv.style = "--bs-bg-opacity: .5;";
+
                     }
                     
                     tr.setAttribute("data-bs-toggle", "modal");

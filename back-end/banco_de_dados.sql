@@ -20,6 +20,6 @@ CREATE TABLE `tb_afazer` (
 `descricao` VARCHAR(255) NOT NULL, 
 `data` DATE NOT NULL,
 `horario` TIME NOT NULL,
-`concluido` BIT NOT NULL,
+`concluido` INT NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
