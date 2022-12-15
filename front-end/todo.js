@@ -137,33 +137,35 @@ function listarAfazer() {
                 for(var i=0;i<resposta.length;i++){
                     var ul = document.createElement("ul");
 
-                    var idAfazer = resposta[i].id;
+                    afazer = resposta[i]
+                    var idAfazer = afazer.id;
                 
                     //console.log("Olha só, esse aqui é o id desta tarfea: "+idAfazer)
                     var item = document.createElement("li");
-                    var textnode = document.createTextNode("Título: "+resposta[i].titulo);
+                    var textnode = document.createTextNode("Título: "+afazer.titulo);
                     item.appendChild(textnode);
                     ul.appendChild(item);
                     item = document.createElement("li");
-                    textnode = document.createTextNode("Descrição: "+resposta[i].descricao);
+                    textnode = document.createTextNode("Descrição: "+afazer.descricao);
                     item.appendChild(textnode);
                     ul.appendChild(item);
                     item = document.createElement("li");
-                    textnode = document.createTextNode("Data: "+resposta[i].data);
+                    textnode = document.createTextNode("Data: "+afazer.data);
                     item.appendChild(textnode);
                     ul.appendChild(item);
                     item = document.createElement("li");
-                    textnode = document.createTextNode("Horário: "+resposta[i].horario);
+                    textnode = document.createTextNode("Horário: "+afazer.horario);
                     item.appendChild(textnode);
                     ul.appendChild(item);
                     item = document.createElement("li");
-                    textnode = document.createTextNode("Concluído: "+resposta[i].concluido);
+                    textnode = document.createTextNode("Concluído: "+afazer.concluido);
                     item.appendChild(textnode);
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Editar";
-                    item.classList.add("edit")/***************/
-					item.classList.add(idAfazer)/***************/
+                    //item.classList.add("edit")/***************/
+                    item.setAttribute("data-editbutton", idAfazer);
+					item.id = idAfazer/***************/
                     item.classList.add("btn")/***************/
                     item.classList.add("bg-primary")/***************/
                     item.classList.add("btn-lg")/***************/
@@ -171,10 +173,12 @@ function listarAfazer() {
                     item.classList.add("glyphicon-plus")/***************/
                     item.setAttribute("data-toggle", "modal");
                     item.setAttribute("data-target", "#editmodal");
-					
-                    /*item.addEventListener('click', () => {
-                        editar(resposta);
-                    })*/
+                    item.addEventListener('click', () => {
+                        console.log("Reposta aqui: "+afazer);
+                        console.log("Isso não era para aparecer")
+                        editarButton(idAfazer);
+                    })
+
                     ul.appendChild(item);
                     item = document.createElement("button");
                     item.innerHTML = "Deletar";
@@ -270,8 +274,15 @@ function listarAfazer() {
     request.send(json)
 }
 
-function buttonEditar() {
+function editarButton(afazer) {
     
+    //document.getElementById("titulo").innerHTML = afazer.titulo; 
+    console.log("Aqui"+afazer); 
+    //document.getElementById("descricao").innerHTML = afazer.descricao;
+    //document.getElementById("data").innerHTML = afazer.data;
+    //document.getElementById("horario").innerHTML = afazer.horario;
+    //document.getElementById("concluido").innerHTML = afazer.concluido;
+
 }
 
 function buttonDeletar() {
@@ -283,11 +294,13 @@ function buttonDeletar() {
 }
 
 function editar(afazer){
-	/*
+	
     var resposta = document.getElementById("response")
-    form = document.getElementById("formAfazer");
-    document.getElementById("nome").innerHTML = 
-    dadosForm = new FormData(form)
+    form = document.getElementById("formEditar");
+    
+    
+
+    /*dadosForm = new FormData(form)
     var titulo = dadosForm.get("titulo")
     var descricao = dadosForm.get("descricao")
     var data = dadosForm.get("data")
