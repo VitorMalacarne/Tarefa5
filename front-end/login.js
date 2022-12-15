@@ -19,7 +19,6 @@ function login() {
     request.onreadystatechange = function () {
         //console.log(request);
         var resposta = this.response;
-        console.log(resposta)
         
         if (request.readyState === 4 && request.status === 200) {
             // Print received data from server
@@ -39,9 +38,14 @@ function login() {
             localStorage.setItem("token", obj.token);
             
             document.getElementById("acessar_todo").removeAttribute("hidden");
+            document.getElementById("response").setAttribute("hidden", true);
             
+            
+
         } else {
-            //document.getElementById("response").innerHTML = this.response
+            document.getElementById("response").innerHTML = this.response
+            console.log(resposta)
+        
         }
     };
     request.send(json);

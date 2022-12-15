@@ -446,6 +446,7 @@ function deletar(id_afazer) {
     request.send(json);
     listarAfazer();
     listarAfazer();
+    listarAfazer();
 }
 
 
