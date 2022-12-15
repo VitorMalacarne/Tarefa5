@@ -44,25 +44,25 @@ class AfazerDAO
     
     public function update($post) {
 
-        $sql = "UPDATE tb_afazer SET
+        $sql = 'UPDATE tb_afazer SET
             titulo = :titulo,
             descricao = :descricao,
             data = :data,
-            horario = :horario;
+            horario = :horario,
             concluido = :concluido
-        WHERE id = :id";
-
+            WHERE id = :id';
+        
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':titulo', $post['titulo']);
-        $stmt->bindValue(':descricao', $post['descricao']);
-        $stmt->bindValue(':data', $post['data']);
-        $stmt->bindValue(':horario', $post['horario']);
-        $stmt->bindValue(':concluido', $post['concluido']);
-        //$stmt->bindValue(':id', $post['id']);
+        $stmt->bindValue(':titulo', $post->titulo);
+        $stmt->bindValue(':descricao', $post->descricao);
+        $stmt->bindValue(':data', $post->data);
+        $stmt->bindValue(':horario', $post->horario);
+        $stmt->bindValue(':concluido', $post->concluido);
+        $stmt->bindValue(':id', $post->id);
 
         return $stmt->execute();
+
     }
-    
 
     public function delete($id) {
         $sql = "DELETE from tb_afazer WHERE id = ?";

@@ -68,13 +68,23 @@
 		<div id="response">Resposta:</div>
 		<div id="response_verifica"></div>
 		<div id="listaAfazeres"></div>
+
+
+
+		<table class="table table-striped">
+            <tbody id="tarefas">
+
+            </tbody>
+        </table>
+
+
 	</main>
 
-	<footer class="bg-light text-center text-lg-start">
+	<!--<footer class="bg-light text-center text-lg-start">
 		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
 			<p class="text-dark">Minha lista de afazeres.</p>
 		</div>
-	</footer>
+	</footer>-->
 
 	<div class="container" id="container">
 		<h2>Meus Afazeres</h2>
@@ -117,8 +127,8 @@
 								</select>
 							</div>
 
-							<button type="button" value="Cadastrar afazer" onclick="CadastrarAfazer();"
-								class="btn btn-primary btn-block"><span
+							<button type="button" value="cadastrar afazer" onclick="cadastrarAfazer();"
+								class="btn btn-primary btn-block" data-dismiss="modal"><span
 									class="glyphicon glyphicon-off"></span>Confirmar</button>
 						</form>
 					</div>
@@ -139,36 +149,36 @@
 				<div class="modal-body" style="padding:40px 50px;">
 					<form id="formEditar" role="form">
 						<div class="form-group">
-							<label for="titulo" id="titulo"><span class="glyphicon glyphicon-tasks"></span>Titulo:</label>
+							<label for="titulo"><span class="glyphicon glyphicon-tasks"></span>Titulo:</label>
 							<input type="text" class="form-control" name="titulo" placeholder="" autocomplete="on"
-								required><br>
+								required id="titulo"><br>
 						</div>
 						<div class="form-group">
-							<label for="descricao" id="descricao"><span
+							<label for="descricao"><span
 									class="glyphicon glyphicon-bookmark"></span>Descrição</label>
 							<input type="text" class="form-control" name="descricao" placeholder=""
-								autocomplete="on" required><br>
-						</div>
-						<div class="form-group" id="data">
-							<label for="data"><span class="glyphicon glyphicon-calendar"></span>Data</label>
-							<input type="date" class="form-control" name="data" placeholder="" autocomplete="on"
-								required><br>
-						</div>
-						<div class="form-group" id="horario">
-							<label for="horario"><span class="glyphicon glyphicon-hourglass"></span>Horário</label>
-							<input type="time" class="form-control" name="horario" placeholder="" autocomplete="on"
-								required><br>
+								autocomplete="on" required id="descricao"><br>
 						</div>
 						<div class="form-group">
-							<label for="concluido" id="concluido"><span class="glyphicon glyphicon-check"></span>Status</label>
-							<select name="concluido" class="form-control" autocomplete="on">
+							<label for="data"><span class="glyphicon glyphicon-calendar"></span>Data</label>
+							<input type="date" class="form-control" name="data" placeholder="" autocomplete="on"
+								required id="data"><br>
+						</div>
+						<div class="form-group">
+							<label for="horario"><span class="glyphicon glyphicon-hourglass"></span>Horário</label>
+							<input type="time" class="form-control" name="horario" placeholder="" autocomplete="on"
+								required id="horario"><br>
+						</div>
+						<div class="form-group">
+							<label for="concluido"><span class="glyphicon glyphicon-check"></span>Status</label>
+							<select name="concluido" class="form-control" autocomplete="on" id="concluido">
 								<option value="" disabled selected hidden>Selecione</option>
 								<option value="0">Pendente</option>
 								<option value="1">Concluído</option>
 							</select>
 						</div>
 	
-						<button type="button" value="Atualizar afazer" onclick="editarAfazer();"
+						<button type="button" value="Atualizar afazer" onclick="editar();"
 							class="btn btn-primary btn-block"><span
 								class="glyphicon glyphicon-off"></span>Confirmar</button>
 					</form>
@@ -182,7 +192,6 @@
 		</div>
 	</div>
 	
-	<button type="button" class="btn bg-primary btn-lg glyphicon glyphicon-plus" id="edit">Editar</button>
 	<script>
 		/*$(document).ready(function () {
 			$("#newtask").click(function () {
@@ -196,9 +205,15 @@
 			});
 		});
 		*/
+		$(document).ready(function () {
+			$('button[data-tipobutton="edit"]').click(function () {
+				console.log("Eita: edit");
+
+			});
+		});
 
 		$(document).ready(function () {
-			$("[editbutton]").click(function () {
+			$('button[deletebutton]').click(function () {
 				console.log("Eita");
 
 			});
