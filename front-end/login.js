@@ -35,12 +35,8 @@ function login() {
             
             console.log("Alo?");
             console.log("Este é o token: " + obj.token);
-            console.log("Este é o id_usuario: " + obj.id_usuario);
-            console.log("Este é o nome: " + obj.nome);
             
             localStorage.setItem("token", obj.token);
-            localStorage.setItem("id_usuario", obj.id_usuario);
-            localStorage.setItem("nome", obj.nome);
             
             document.getElementById("acessar_todo").removeAttribute("hidden");
             
